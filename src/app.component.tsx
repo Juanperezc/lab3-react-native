@@ -52,7 +52,7 @@ interface State {
 export default class App extends React.Component<{}, State> {
 
   public state: State = {
-    theme: 'Eva Light',
+    theme: 'Eva Dark',
   };
 
   private onTransitionTrackError = (error: any): void => {

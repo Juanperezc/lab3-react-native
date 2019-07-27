@@ -63,7 +63,7 @@
 * feat(article): article v3 add (#92) 9889b0f, closes #92
 * feat(assets): dark theme icons add 6a73f6f
 * feat(common): custom app-bars add (#114) 7f4d4a6, closes #114
-* feat(common): make Kitten Tricks an Expo app 69662cf
+* feat(common): make BEM an Expo app 69662cf
 * feat(components): add components menu icons 082e273
 * feat(components): add simple components showcase 768829b
 * feat(components): interactive showcases b196f06
