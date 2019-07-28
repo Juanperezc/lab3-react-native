@@ -49,11 +49,11 @@ export const imageProfile1: ImageSource = {
 };
 
 export const imageProfile2: ImageSource = {
-  imageSource: require('./source/image-profile-2.jpg'),
+  imageSource: require('./source/amazon_logo.png'),
 };
 
 export const imageProfile3: ImageSource = {
-  imageSource: require('./source/image-profile-3.jpg'),
+  imageSource: require('./source/officenet_logo.jpg'),
 };
 
 export const imageProfile4: ImageSource = {
@@ -316,19 +316,19 @@ export const imageMovieDetailsLayout: ImageSource = {
 };
 
 export const imagePost1Bg: ImageSource = {
-  imageSource: require('./source/image-background-post-1.jpg'),
+  imageSource: require('./source/office_net_post.jpg'),
 };
 
 export const imagePost2Bg: ImageSource = {
-  imageSource: require('./source/image-background-post-2.jpg'),
+  imageSource: require('./source/amazon_post.jpg'),
 };
 
 export const imageArticle1Bg: ImageSource = {
-  imageSource: require('./source/image-article-background-1.jpg'),
+  imageSource: require('./source/amazon_post.jpg'),
 };
 
 export const imageArticle2Bg: ImageSource = {
-  imageSource: require('./source/image-article-background-2.jpg'),
+  imageSource: require('./source/office_net_post.jpg'),
 };
 
 export const imageArticle3Bg: ImageSource = {
@@ -360,7 +360,7 @@ export const imageExercise2Bg: ImageSource = {
 };
 
 export const imageExercise3Bg: ImageSource = {
-  imageSource: require('./source/image-article-background-2.jpg'),
+  imageSource: require('./source/office_net_post.jpg'),
 };
 
 export const imageExercise4Bg: ImageSource = {

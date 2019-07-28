@@ -49,8 +49,8 @@ export const profile2: Profile = {
   photo: imageProfile2,
   about: 'Hi! My name is Alexa. I\'m 25 and I live in Berlin.' +
     ' I\'m interested in computer science, music, sport and fantasy literature',
-  firstName: 'Alexa',
-  lastName: 'Tenorio',
+  firstName: 'Amazon',
+  lastName: 'LLC',
   gender: Gender.FEMALE,
   age: 25,
   weight: 48,
@@ -67,8 +67,8 @@ export const profile3: Profile = {
   photo: imageProfile3,
   about: 'Hi! My name is Isaac. I\'m 25 and I live in Berlin.' +
     ' I\'m interested in computer science, music, sport and fantasy literature',
-  firstName: 'Isaac',
-  lastName: 'Hunt',
+  firstName: 'OfficenetVE',
+  lastName: 'CA',
   gender: Gender.MALE,
   age: 34,
   weight: 113,
