@@ -73,10 +73,6 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     this.setState({ firstName });
   };
 
-  private onLastNameValidationResult = (lastName: string) => {
-    this.setState({ lastName });
-  };
-
   private onDateInputTextChange = (date: string) => {
     this.setState({ date });
   };
@@ -89,23 +85,21 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     this.setState({ password });
   };
 
-  private onTermsAcceptChange = (termsAccepted: boolean) => {
+  /* private onTermsAcceptChange = (termsAccepted: boolean) => {
     this.setState({ termsAccepted });
-  };
+  }; */
 
   private isValid = (value: SignUpForm1Data): boolean => {
-    const { firstName, lastName, date, email, password, termsAccepted } = value;
+    const { firstName, date, email, password} = value;
 
     return firstName !== undefined
-      && lastName !== undefined
       && date !== undefined
       && email !== undefined
       && password !== undefined
-      && termsAccepted;
   };
 
   private passwordCaption = (): string => {
-    return this.state.password ? 'Password entered correctly' : 'Password entered incorrectly';
+    return this.state.password ? '✓' : 'La constraseña no cumple con los requisitos de seguridad';
   };
 
   public render(): React.ReactNode {
@@ -117,14 +111,15 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
         {...restProps}>
         <ValidationInput
           style={[themedStyle.input, themedStyle.firstNameInput]}
-          textStyle={themedStyle.inputText}
-          placeholder='Ally'
-          label='FIRST NAME'
+          textStyle={textStyle.paragraph}
+          labelStyle={textStyle.label}
+          placeholder='Amazon LLC'
+          label='Nombre Completo'
           autoCapitalize='words'
           validator={NameValidator}
           onChangeText={this.onFirstNameInputTextChange}
         />
-        <ValidationInput
+        {/* <ValidationInput
           style={themedStyle.input}
           textStyle={textStyle.paragraph}
           labelStyle={textStyle.label}
@@ -133,22 +128,22 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           autoCapitalize='words'
           validator={NameValidator}
           onChangeText={this.onLastNameValidationResult}
-        />
+        /> */}
         <ValidationInput
           style={themedStyle.input}
           textStyle={textStyle.paragraph}
           labelStyle={textStyle.label}
           placeholder='18/10/1995'
-          label='DATE OF BIRTHDAY'
+          label='Fecha Nacimiento/Creación'
           validator={DOBValidator}
           onChangeText={this.onDateInputTextChange}
         />
         <ValidationInput
           style={themedStyle.input}
-          textStyle={themedStyle.inputText}
-          labelStyle={themedStyle.inputLabel}
-          placeholder='ally.watsan@gmail.com'
-          label='EMAIL'
+          textStyle={textStyle.paragraph}
+          labelStyle={textStyle.label}
+          placeholder='northwest.1-s3@amazon.com'
+          label='Correo'
           validator={EmailValidator}
           onChangeText={this.onEmailInputTextChange}
         />
@@ -157,20 +152,20 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           textStyle={textStyle.paragraph}
           labelStyle={textStyle.label}
           captionTextStyle={textStyle.paragraph}
-          label='PASSWORD'
-          placeholder='Password'
+          label='Contraseña'
+          placeholder='Contraseña'
           caption={this.passwordCaption()}
           secureTextEntry={true}
           validator={PasswordValidator}
           onChangeText={this.onPasswordInputTextChange}
         />
-        <CheckBox
+        {/* <CheckBox
           style={themedStyle.termsCheckBox}
           textStyle={themedStyle.termsCheckBoxText}
           checked={this.state.termsAccepted}
-          text={'By creating an account, I agree to the Ewa Terms of\nUse and Privacy Policy'}
+          text={'By creating an account, I agree to the Terms of\nUse and Privacy Policy'}
           onChange={this.onTermsAcceptChange}
-        />
+        /> */}
       </View>
     );
   }

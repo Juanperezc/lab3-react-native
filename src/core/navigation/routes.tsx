@@ -315,7 +315,7 @@ const DashboardNavigator: NavigationContainer = createStackNavigator(
 //*beta
 const AuthNavigator: NavigationContainer = createStackNavigator(
   {
-    ['Auth']: SignIn1Container,
+    ['Login']: SignIn1Container,
   }, {
     defaultNavigationOptions: MenuNavigationOptions,
   }

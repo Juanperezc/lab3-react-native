@@ -18,31 +18,11 @@ export class SignUp1Container extends React.Component<NavigationScreenProps> {
     });
   };
 
-  private onGooglePress = () => {
-
-  };
-
-  private onFacebookPress = () => {
-
-  };
-
-  private onTwitterPress = () => {
-
-  };
-
-  private onEwaPress = () => {
-
-  };
-
   public render(): React.ReactNode {
     return (
       <SignUp1
         onSignUpPress={this.onSignUpPress}
         onSignInPress={this.onSignInPress}
-        onGooglePress={this.onGooglePress}
-        onFacebookPress={this.onFacebookPress}
-        onTwitterPress={this.onTwitterPress}
-        onEwaPress={this.onEwaPress}
       />
     );
   }
