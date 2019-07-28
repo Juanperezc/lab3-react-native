@@ -304,15 +304,51 @@ const LayoutsNavigator: NavigationContainer = createStackNavigator(
   },
 );
 
+//*beta
+const DashboardNavigator: NavigationContainer = createStackNavigator(
+  {
+    ['Dashboard']: ArticleList1Container,
+  }, {
+    defaultNavigationOptions: MenuNavigationOptions,
+  }
+);
+//*beta
+const AuthNavigator: NavigationContainer = createStackNavigator(
+  {
+    ['Auth']: SignIn1Container,
+  }, {
+    defaultNavigationOptions: MenuNavigationOptions,
+  }
+);
+//*beta
+const ProfileNavigator: NavigationContainer = createStackNavigator(
+  {
+    ['Profile']: Profile7Container,
+  }, {
+    defaultNavigationOptions: MenuNavigationOptions,
+  }
+);
+//*beta
+const MessageNavigator: NavigationContainer = createStackNavigator(
+  {
+    ['Message']: ConversationsListContainer,
+  }, {
+    defaultNavigationOptions: MenuNavigationOptions,
+  }
+);
 const MenuNavigator: NavigationContainer = createBottomTabNavigator({
+  ['Dashboard']: DashboardNavigator,
+  ['Message']: MessageNavigator,
+  ['Profile']: ProfileNavigator,
   ['Layouts']: LayoutsNavigator,
-  ['Components']: ComponentsNavigator,
-  ['Themes']: ThemesNavigator,
+  ['Components']: ComponentsNavigator
 }, {
   tabBarComponent: MenuContainer,
 });
 
+
 const AppNavigator: NavigationContainer = createStackNavigator({
+  ['Auth']: AuthNavigator,
   ['Home']: MenuNavigator,
   ...AuthNavigationMap,
   ...SocialNavigationMap,

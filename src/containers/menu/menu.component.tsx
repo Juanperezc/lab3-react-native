@@ -11,9 +11,9 @@ import {
   BottomNavigationTab,
 } from '@kitten/ui';
 import {
-  ColorPaletteIconOutline,
-  LayoutIconOutline,
-  StarIconOutline,
+  PersonIconFill,
+  GridIconOutline,
+  MessageCircleIconOutline,
 } from '@src/assets/icons';
 import { themes } from '@src/core/themes';
 
@@ -41,16 +41,24 @@ class MenuComponent extends React.Component<Props> {
             selectedIndex={selectedIndex}
             onSelect={this.onTabSelect}>
             <BottomNavigationTab
+              title='Inicio'
+              icon={GridIconOutline}
+            />
+            <BottomNavigationTab
+              title='Mensajes'
+              icon={MessageCircleIconOutline}
+            />
+            <BottomNavigationTab
+              title='Perfil'
+              icon={PersonIconFill}
+            />
+            <BottomNavigationTab
               title='Layouts'
-              icon={LayoutIconOutline}
+              icon={MessageCircleIconOutline}
             />
             <BottomNavigationTab
               title='Components'
-              icon={StarIconOutline}
-            />
-            <BottomNavigationTab
-              title='Themes'
-              icon={ColorPaletteIconOutline}
+              icon={MessageCircleIconOutline}
             />
           </BottomNavigation>
         </ThemeProvider>
