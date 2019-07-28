@@ -84,8 +84,8 @@ class SignInForm1Component extends React.Component<SignInForm1Props, State> {
           style={themedStyle.emailInput}
           textStyle={textStyle.paragraph}
           labelStyle={textStyle.label}
-          label='EMAIL'
-          placeholder='Email'
+          label='Correo'
+          placeholder='Correo_prueba@test.com'
           validator={EmailValidator}
           onChangeText={this.onEmailInputTextChange}
         />
@@ -94,8 +94,8 @@ class SignInForm1Component extends React.Component<SignInForm1Props, State> {
           textStyle={textStyle.paragraph}
           labelStyle={textStyle.label}
           secureTextEntry={true}
-          placeholder='Password'
-          label='PASSWORD'
+          placeholder='Contraseña'
+          label='Contraseña'
           validator={PasswordValidator}
           onChangeText={this.onPasswordInputTextChange}
         />

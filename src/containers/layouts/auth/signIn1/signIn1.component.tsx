@@ -17,7 +17,6 @@ import {
 import {
   SignInForm1,
   SignInForm1Data,
-  SocialAuth,
 } from '@src/components/auth';
 import {
   ScrollableAvoidKeyboard,
@@ -25,7 +24,6 @@ import {
 } from '@src/components/common';
 import {
   ArrowForwardIconOutline,
-  HeartIconFill,
 } from '@src/assets/icons';
 import {
   imageSignIn1Bg,
@@ -35,10 +33,6 @@ import {
 interface ComponentProps {
   onSignInPress: (formData: SignInForm1Data) => void;
   onSignUpPress: () => void;
-  onGooglePress: () => void;
-  onFacebookPress: () => void;
-  onTwitterPress: () => void;
-  onEwaPress: () => void;
 }
 
 export type SignIn1Props = ThemedComponentProps & ComponentProps;
@@ -63,30 +57,8 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
     this.props.onSignUpPress();
   };
 
-  private onGoogleButtonPress = () => {
-    this.props.onGooglePress();
-  };
-
-  private onFacebookButtonPress = () => {
-    this.props.onFacebookPress();
-  };
-
-  private onTwitterButtonPress = () => {
-    this.props.onTwitterPress();
-  };
-
-  private onEwaButtonPress = () => {
-    this.props.onEwaPress();
-  };
-
   private onFormDataChange = (formData: SignInForm1Data) => {
     this.setState({ formData });
-  };
-
-  private renderEwaButtonIcon = (style: StyleType): React.ReactElement<ImageProps> => {
-    const { themedStyle } = this.props;
-
-    return HeartIconFill({ ...style, ...themedStyle.ewaButtonIcon });
   };
 
   private renderSignUpButtonIcon = (style: StyleType): React.ReactElement<ImageProps> => {
@@ -103,21 +75,11 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
         <ImageBackground
           style={themedStyle.container}
           source={this.backgroundImage.imageSource}>
-          <Button
-            appearance='ghost'
-            style={themedStyle.ewaButton}
-            textStyle={themedStyle.ewaButtonText}
-            size='large'
-            activeOpacity={0.75}
-            icon={this.renderEwaButtonIcon}
-            onPress={this.onEwaButtonPress}>
-            EWA
-          </Button>
           <View style={themedStyle.signInContainer}>
             <Text
               style={themedStyle.signInLabel}
               category='h4'>
-              SIGN IN
+              Bienvenido
             </Text>
             <Button
               style={themedStyle.signUpButton}
@@ -127,7 +89,7 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
               size='giant'
               icon={this.renderSignUpButtonIcon}
               onPress={this.onSignUpButtonPress}>
-              Sign Up
+              Registrarse
             </Button>
           </View>
           <SignInForm1
@@ -139,17 +101,8 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
             textStyle={textStyle.button}
             disabled={!this.state.formData}
             onPress={this.onSignInButtonPress}>
-            SIGN IN
+            INGRESAR
           </Button>
-          <SocialAuth
-            style={themedStyle.socialAuthContainer}
-            iconStyle={themedStyle.socialAuthIcon}
-            hintStyle={themedStyle.socialAuthHint}
-            hint='Sign with a social account'
-            onGooglePress={this.onGoogleButtonPress}
-            onFacebookPress={this.onFacebookButtonPress}
-            onTwitterPress={this.onTwitterButtonPress}
-          />
         </ImageBackground>
       </ScrollableAvoidKeyboard>
     );
@@ -166,21 +119,6 @@ export const SignIn1 = withStyles(SignIn1Component, (theme: ThemeType) => ({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 24,
-  },
-  socialAuthContainer: {
-    marginTop: 48,
-  },
-  ewaButton: {
-    maxWidth: 72,
-    paddingHorizontal: 0,
-  },
-  ewaButtonText: {
-    color: 'white',
-    ...textStyle.button,
-  },
-  ewaButtonIcon: {
-    marginHorizontal: 0,
-    tintColor: 'white',
   },
   formContainer: {
     flex: 1,
@@ -201,12 +139,6 @@ export const SignIn1 = withStyles(SignIn1Component, (theme: ThemeType) => ({
   signUpButtonIcon: {
     marginHorizontal: 0,
     tintColor: 'white',
-  },
-  socialAuthIcon: {
-    tintColor: 'white',
-  },
-  socialAuthHint: {
-    color: 'white',
   },
 }));
 
