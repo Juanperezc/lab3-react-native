@@ -9,13 +9,17 @@ interface State {
 }
 
 export class ArticleList1Container extends React.Component<NavigationScreenProps, State> {
-
+  private navigationKey: string = 'ArticleList1Container';
   public state: State = {
     articles: articles,
   };
 
   private onItemPress = (article: Article) => {
-
+    console.log('test');
+    this.props.navigation.navigate({
+      routeName: 'Detalle publicación',
+      key: this.navigationKey,
+    });
   };
 
   private onItemLikePress = (article: Article) => {

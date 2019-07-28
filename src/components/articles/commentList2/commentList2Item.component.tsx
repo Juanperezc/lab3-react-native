@@ -65,7 +65,10 @@ class CommentList2ItemComponent extends React.Component<CommentList2ItemProps> {
           category='s1'>
           {data.text}
         </Text>
+       
+
       </ListItem>
+/* aqui! ponemos el input para replicar */
     );
   }
 }

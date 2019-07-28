@@ -183,7 +183,7 @@ const ArticlesNavigationMap: NavigationRouteConfigMap = {
     screen: Article2Container,
     navigationOptions: ArticlesNavigationOptions,
   },
-  ['Article 3']: {
+  ['Detalle publicación']: {
     screen: Article3Container,
     navigationOptions: ArticlesNavigationOptions,
   },

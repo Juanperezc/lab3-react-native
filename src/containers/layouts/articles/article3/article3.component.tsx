@@ -86,7 +86,7 @@ class Article3Component extends React.Component<Article3Props> {
             style={themedStyle.articleAuthorLabel}
             appearance='hint'
             category='p2'>
-            {`By ${article.author.firstName} ${article.author.lastName}`}
+            {`Por ${article.author.firstName} ${article.author.lastName}`}
           </Text>
           <Text
             style={themedStyle.articleDateLabel}
@@ -99,12 +99,12 @@ class Article3Component extends React.Component<Article3Props> {
           <Text
             style={[themedStyle.inputLabel, themedStyle.inputSpace]}
             category='s1'>
-            Comments
+            Comentarios
           </Text>
           <Input
             style={themedStyle.inputSpace}
             textStyle={textStyle.paragraph}
-            placeholder='Write your comment'
+            placeholder='Escribe tu comentario'
             value={currentCommentText}
             onChangeText={this.onCommentTextChange}
             onSubmitEditing={this.handleTextSubmit}

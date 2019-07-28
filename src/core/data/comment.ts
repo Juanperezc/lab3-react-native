@@ -9,13 +9,13 @@ import {
 export const comments: Comment[] = [
   {
     author: profile1,
-    text: 'This is very useful information for me. Thanks for your article!',
+    text: 'Me encantan las ofertas de verano',
     likesCount: 245,
     date: 'Hoy 11:35 pm',
     comments: [
       {
         author: profile2,
-        text: 'Yes! I agree with you!',
+        text: 'Gracias',
         likesCount: 1,
         date: 'Hoy 15:35 pm',
         comments: [],
@@ -24,16 +24,16 @@ export const comments: Comment[] = [
   },
   {
     author: profile3,
-    text: 'This is very useful information for me. Thanks for your article!',
+    text: 'Surtimos nuestras oficinas gracias a ustedes!',
     likesCount: 10,
     date: 'Hoy 10:36 pm',
     comments: [],
   },
-  {
+/*   {
     author: profile4,
     text: 'This is very useful information for me. Thanks for your article!',
     likesCount: 2,
     date: 'Hoy 02:11 pm',
     comments: [],
-  },
+  }, */
 ];

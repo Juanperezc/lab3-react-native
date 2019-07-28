@@ -50,6 +50,6 @@ export const routes: ArticlesContainerData[] = [
     title: 'Article',
     description: 'Option 3',
     image: imageArticle3Layout.imageSource,
-    route: 'Article 3',
+    route: 'Detalle publicación',
   },
 ];
