@@ -78,7 +78,7 @@ class ChatHeaderComponent extends React.Component<ChatHeaderProps> {
 
     return interlocutor && {
       title: `${interlocutor.firstName} ${interlocutor.lastName}`,
-      subtitle: `Last seen ${lastSeen}`,
+      subtitle: ``, /* Ultima vez ${lastSeen}*/
       rightControls: this.renderRightControls(),
     };
   };

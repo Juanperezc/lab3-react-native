@@ -11,13 +11,13 @@ import {
 export const posts: Post[] = [
   {
     photo: imagePost2Bg,
-    date: 'Today 12:35 pm',
+    date: 'Hoy 12:35 pm',
     likes: 125,
     author: profile2,
   },
   {
     photo: imagePost1Bg,
-    date: 'Today 12:35 pm',
+    date: 'Hoy 12:35 pm',
     likes: 232,
     author: profile3,
   },

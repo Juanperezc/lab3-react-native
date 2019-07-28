@@ -56,7 +56,7 @@ class ProfileSocialsComponent extends React.Component<ProfileSocialsProps> {
             style={[themedStyle.hintLabel, derivedTextStyle]}
             appearance='hint'
             category='s2'>
-            Followers
+            Seguidores
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -68,7 +68,7 @@ class ProfileSocialsComponent extends React.Component<ProfileSocialsProps> {
             style={[themedStyle.hintLabel, derivedTextStyle]}
             appearance='hint'
             category='s2'>
-            Following
+            Siguiendo
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -80,7 +80,7 @@ class ProfileSocialsComponent extends React.Component<ProfileSocialsProps> {
             style={[themedStyle.hintLabel, derivedTextStyle]}
             appearance='hint'
             category='s2'>
-            Posts
+            Publicaciones
           </Text>
         </TouchableOpacity>
       </View>

@@ -84,7 +84,7 @@ class Profile1Component extends React.Component<Profile1Props> {
               style={themedStyle.followButton}
               textStyle={textStyle.button}
               onPress={this.onFollowButtonPress}>
-              FOLLOW
+              SEGUIR
             </Button>
           </View>
         </ProfileInfo1>

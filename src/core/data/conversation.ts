@@ -51,7 +51,7 @@ export const conversation4: Conversation = {
 
 export const conversation5: Conversation = {
   interlocutor: profile9,
-  lastSeen: 'just now',
+  lastSeen: 'Ahora mismo',
   messages: [
     message11,
     message12,
@@ -65,7 +65,7 @@ export const conversation5: Conversation = {
 
 export const conversation6: Conversation = {
   interlocutor: profile9,
-  lastSeen: 'just now',
+  lastSeen: 'Ahora mismo',
   messages: [
     message11,
     message12,
@@ -80,7 +80,7 @@ export const conversation6: Conversation = {
 
 export const conversation7: Conversation = {
   interlocutor: profile5,
-  lastSeen: 'just now',
+  lastSeen: 'Ahora mismo',
   messages: [
     message21,
   ],
@@ -88,7 +88,7 @@ export const conversation7: Conversation = {
 
 export const conversation8: Conversation = {
   interlocutor: profile6,
-  lastSeen: 'just now',
+  lastSeen: 'Ahora mismo',
   messages: [
     message16,
   ],
@@ -96,7 +96,7 @@ export const conversation8: Conversation = {
 
 export const conversation9: Conversation = {
   interlocutor: profile1,
-  lastSeen: 'just now',
+  lastSeen: 'Ahora mismo',
   messages: [
     message14,
   ],
@@ -104,7 +104,7 @@ export const conversation9: Conversation = {
 
 export const conversation10: Conversation = {
   interlocutor: profile2,
-  lastSeen: 'just now',
+  lastSeen: 'Ahora mismo',
   messages: [
     message13,
   ],
@@ -112,7 +112,7 @@ export const conversation10: Conversation = {
 
 export const conversation11: Conversation = {
   interlocutor: profile9,
-  lastSeen: 'just now',
+  lastSeen: 'Ahora mismo',
   messages: [
     message11,
   ],
@@ -120,7 +120,7 @@ export const conversation11: Conversation = {
 
 export const conversation12: Conversation = {
   interlocutor: profile10,
-  lastSeen: 'just now',
+  lastSeen: 'Ahora mismo',
   messages: [
     message17,
   ],

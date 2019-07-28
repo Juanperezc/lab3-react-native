@@ -12,7 +12,7 @@ import {
 
 export const message1: Message = {
   author: profile1,
-  text: 'Hey! How are you?',
+  text: 'Hola como estas?',
   date: '4:30 PM',
   read: false,
   delivered: false,
@@ -20,7 +20,7 @@ export const message1: Message = {
 
 export const message2: Message = {
   author: profile2,
-  text: 'Hello! Can you send me my favourite book and something else?',
+  text: 'Hola podrias mandarme tu numero?',
   date: '4:12 PM',
   read: true,
   delivered: true,
@@ -28,7 +28,7 @@ export const message2: Message = {
 
 export const message3: Message = {
   author: profile3,
-  text: 'No problem! It\'s fine.',
+  text: 'No hay problema es este 04245844475.',
   date: '12:00 PM',
   read: false,
   delivered: false,
@@ -36,7 +36,7 @@ export const message3: Message = {
 
 export const message4: Message = {
   author: profile4,
-  text: 'I am good! Thank you. And how are you?',
+  text: 'Gracias ya te llamo?',
   date: '12:00 PM',
   read: false,
   delivered: true,
@@ -45,7 +45,7 @@ export const message4: Message = {
 
 export const message11: Message = {
   author: profile1,
-  text: 'Hello! How are you?',
+  text: 'Hola! como estas?',
   date: '4:00 PM',
   read: true,
   delivered: true,
@@ -53,7 +53,7 @@ export const message11: Message = {
 
 export const message12: Message = {
   author: profile2,
-  text: 'Hey! I\'m fine. Thanks! And you?',
+  text: 'Hey estoy bien, y tu?',
   date: '4:15 PM',
   read: true,
   delivered: true,
@@ -61,7 +61,7 @@ export const message12: Message = {
 
 export const message13: Message = {
   author: profile1,
-  text: 'I\'m fine too! Thanks!',
+  text: 'Tambien estoy bien gracias!',
   date: '4:19 PM',
   read: true,
   delivered: true,
@@ -69,7 +69,7 @@ export const message13: Message = {
 
 export const message14: Message = {
   author: profile1,
-  text: 'Do you have any plans today?',
+  text: 'Tienes planes para hoy?',
   date: '4:20 PM',
   read: true,
   delivered: true,
@@ -77,7 +77,7 @@ export const message14: Message = {
 
 export const message15: Message = {
   author: profile2,
-  text: 'Yes. I\'m gonna go to the cinema. Do you wanna come with me?',
+  text: 'Si voy a ir al cine mas tarde?',
   date: '4:25 PM',
   read: true,
   delivered: true,
@@ -85,7 +85,7 @@ export const message15: Message = {
 
 export const message16: Message = {
   author: profile1,
-  text: 'Yes, sure.',
+  text: 'Si, claro.',
   date: '4:28 PM',
   read: true,
   delivered: true,
@@ -93,7 +93,7 @@ export const message16: Message = {
 
 export const message17: Message = {
   author: profile2,
-  text: 'OK! See you then)',
+  text: 'OK! nos vemos luego',
   date: '4:30 PM',
   read: true,
   delivered: true,

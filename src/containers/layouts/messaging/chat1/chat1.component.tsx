@@ -142,18 +142,18 @@ class Chat1Component extends React.Component<Chat1ComponentProps> {
           renderItem={this.renderMessage}
         />
         <View style={themedStyle.inputContainer}>
-          <Button
+       {/*    <Button
             style={themedStyle.addMessageButton}
             textStyle={textStyle.button}
             icon={PlusIconFill}
             onPress={this.onMessageAdd}
-          />
+          /> */}
           <Input
-            icon={MicIconFill}
+          
             style={themedStyle.messageInput}
             textStyle={textStyle.paragraph}
             value={newMessage}
-            placeholder='Message...'
+            placeholder='Mensaje...'
             onChangeText={this.onNewMessageChange}
           />
           {sendMessageButtonElement}

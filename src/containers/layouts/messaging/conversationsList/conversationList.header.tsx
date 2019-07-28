@@ -58,8 +58,8 @@ class ConversationListHeaderComponent extends React.Component<ConversationListHe
       <SafeAreaView style={themedStyle.container}>
         <TopNavigation
           alignment='center'
-          title='Conversations List'
-          leftControl={this.renderLeftControl()}
+          title='Mensajes'
+         /*  leftControl={this.renderLeftControl()} */
           rightControls={this.renderRightControls()}
         />
       </SafeAreaView>

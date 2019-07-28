@@ -9,7 +9,7 @@ import { MessagingContainerData } from './type';
 
 export const routes: MessagingContainerData[] = [
   {
-    title: 'Conversations List',
+    title: 'Mensajes',
     description: 'Option 1',
     image: imageConversationListLayout.imageSource,
     route: 'Conversations List',

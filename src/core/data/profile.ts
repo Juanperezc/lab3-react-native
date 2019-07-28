@@ -29,8 +29,8 @@ import {
 
 export const profile1: Profile = {
   photo: imageProfile1,
-  about: 'Hi! My name is Jennifer. I\'m 25 and I live in Berlin.' +
-    ' I\'m interested in computer science, music, sport and fantasy literature',
+  about: 'Hola mi nombre es Jeniffer tengo 25 y vivo en berlin.' +
+    ' Mis intereses son la informatica, deportes y la literatura',
   firstName: 'Jennifer',
   lastName: 'Green',
   gender: Gender.FEMALE,
@@ -40,7 +40,7 @@ export const profile1: Profile = {
   inseam: 45,
   email: 'jen.green@gmail.com',
   phoneNumber: '+375 44 846 97 68',
-  location: 'Berlin, Germany',
+  location: 'Berlin, Alemania',
   friends: [],
   onLine: true,
 };

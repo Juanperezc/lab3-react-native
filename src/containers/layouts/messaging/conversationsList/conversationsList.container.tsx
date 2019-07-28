@@ -33,14 +33,7 @@ interface State {
 const conversations: Conversation[] = [
   conversation1,
   conversation2,
-  conversation3,
-  conversation4,
-  conversation7,
-  conversation8,
-  conversation9,
-  conversation10,
-  conversation11,
-  conversation12,
+  conversation3
 ];
 
 export class ConversationsListContainer extends React.Component<NavigationScreenProps, State> {

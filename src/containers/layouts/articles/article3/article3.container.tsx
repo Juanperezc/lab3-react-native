@@ -58,7 +58,7 @@ export class Article3Container extends React.Component<NavigationScreenProps, St
       author: profiles[Math.floor(Math.random() * profiles.length)],
       text: this.state.currentCommentText,
       likesCount: 1,
-      date: 'Today 10:36 pm',
+      date: 'Hoy 10:36 pm',
     });
     this.setState({
       article: articleCopy,

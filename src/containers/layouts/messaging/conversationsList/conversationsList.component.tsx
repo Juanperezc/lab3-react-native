@@ -61,7 +61,7 @@ class ConversationsListComponent extends React.Component<ConversationsListProps>
         style={themedStyle.input}
         textStyle={textStyle.paragraph}
         icon={SearchIconOutline}
-        placeholder='Search Interlocutor...'
+        placeholder='Buscar conversación con...'
         onChangeText={this.onSearchStringChange}
       />
     ) : null;

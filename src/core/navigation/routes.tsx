@@ -307,7 +307,7 @@ const LayoutsNavigator: NavigationContainer = createStackNavigator(
 //*beta
 const DashboardNavigator: NavigationContainer = createStackNavigator(
   {
-    ['Dashboard']: ArticleList1Container,
+    ['Inicio']: ArticleList1Container,
   }, {
     defaultNavigationOptions: MenuNavigationOptions,
   }
@@ -323,7 +323,7 @@ const AuthNavigator: NavigationContainer = createStackNavigator(
 //*beta
 const ProfileNavigator: NavigationContainer = createStackNavigator(
   {
-    ['Profile']: Profile7Container,
+    ['Profile']: Profile1Container,
   }, {
     defaultNavigationOptions: MenuNavigationOptions,
   }
@@ -337,7 +337,7 @@ const MessageNavigator: NavigationContainer = createStackNavigator(
   }
 );
 const MenuNavigator: NavigationContainer = createBottomTabNavigator({
-  ['Dashboard']: DashboardNavigator,
+  ['Inicio']: DashboardNavigator,
   ['Message']: MessageNavigator,
   ['Profile']: ProfileNavigator,
   ['Layouts']: LayoutsNavigator,
@@ -348,7 +348,7 @@ const MenuNavigator: NavigationContainer = createBottomTabNavigator({
 
 
 const AppNavigator: NavigationContainer = createStackNavigator({
-  ['Auth']: AuthNavigator,
+  //['Auth']: AuthNavigator,
   ['Home']: MenuNavigator,
   ...AuthNavigationMap,
   ...SocialNavigationMap,

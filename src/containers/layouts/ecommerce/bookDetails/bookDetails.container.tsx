@@ -66,7 +66,7 @@ export class BookDetailsContainer extends React.Component<NavigationScreenProps,
       author: profiles[Math.floor(Math.random() * profiles.length)],
       text: this.state.currentCommentText,
       likesCount: 1,
-      date: 'Today 10:36 pm',
+      date: 'Hoy 10:36 pm',
     });
     this.setState({
       comments: commentsCopy,

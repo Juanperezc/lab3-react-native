@@ -27,7 +27,7 @@ import {
   ChatMessageProps,
 } from '@src/components/messaging';
 import {
-  MicIconFill,
+
   PaperPlaneIconFill,
   PlusIconFill,
 } from '@src/assets/icons';
@@ -218,7 +218,7 @@ class Chat2Component extends React.Component<Chat2ComponentProps> {
             <Input
               style={themedStyle.messageInput}
               textStyle={textStyle.paragraph}
-              icon={MicIconFill}
+           
               value={newMessage}
               placeholder='Message...'
               onChangeText={this.onNewMessageChange}
