@@ -35,10 +35,6 @@ import {
 interface ComponentProps {
   onSignUpPress: (formData: SignUpForm1Data) => void;
   onSignInPress: () => void;
-  onGooglePress: () => void;
-  onFacebookPress: () => void;
-  onTwitterPress: () => void;
-  onEwaPress: () => void;
 }
 
 export type SignUp1Props = ThemedComponentProps & ComponentProps;
@@ -67,28 +63,6 @@ class SignUp1Component extends React.Component<SignUp1Props, State> {
     this.props.onSignInPress();
   };
 
-  private onGoogleButtonPress = () => {
-    this.props.onGooglePress();
-  };
-
-  private onFacebookButtonPress = () => {
-    this.props.onFacebookPress();
-  };
-
-  private onTwitterButtonPress = () => {
-    this.props.onTwitterPress();
-  };
-
-  private onEwaButtonPress = () => {
-    this.props.onEwaPress();
-  };
-
-  private renderEwaButtonIcon = (style: StyleType): React.ReactElement<ImageProps> => {
-    const { themedStyle } = this.props;
-
-    return HeartIconFill({ ...style, ...themedStyle.ewaButtonIcon });
-  };
-
   private renderSignInButtonIcon = (style: StyleType): React.ReactElement<ImageProps> => {
     const { themedStyle } = this.props;
 
@@ -103,21 +77,12 @@ class SignUp1Component extends React.Component<SignUp1Props, State> {
         <ImageOverlay
           style={themedStyle.headerContainer}
           source={this.backgroundImage.imageSource}>
-          <Button
-            appearance='ghost'
-            style={themedStyle.ewaButton}
-            textStyle={themedStyle.ewaButtonText}
-            size='large'
-            activeOpacity={0.75}
-            icon={this.renderEwaButtonIcon}
-            onPress={this.onEwaButtonPress}>
-            EWA
-          </Button>
+
           <View style={themedStyle.signUpContainer}>
             <Text
               style={themedStyle.signInLabel}
               category='h4'>
-              SIGN UP
+              Registro
             </Text>
             <Button
               style={themedStyle.signInButton}
@@ -127,32 +92,10 @@ class SignUp1Component extends React.Component<SignUp1Props, State> {
               activeOpacity={0.75}
               icon={this.renderSignInButtonIcon}
               onPress={this.onSignInButtonPress}>
-              Sign In
+              Ingresar
             </Button>
           </View>
         </ImageOverlay>
-        <SocialAuth
-          style={themedStyle.socialAuthContainer}
-          hintStyle={themedStyle.socialAuthHint}
-          iconStyle={themedStyle.socialAuthIcon}
-          hint='Sign with a social account'
-          onGooglePress={this.onGoogleButtonPress}
-          onFacebookPress={this.onFacebookButtonPress}
-          onTwitterPress={this.onTwitterButtonPress}
-        />
-        <View style={themedStyle.orContainer}>
-          <View style={themedStyle.divider}/>
-          <Text
-            style={themedStyle.orLabel}
-            category='h5'>
-            OR
-          </Text>
-          <View style={themedStyle.divider}/>
-        </View>
-        <Text
-          style={themedStyle.emailSignLabel}>
-          Sign up with Email
-        </Text>
         <SignUpForm1
           style={themedStyle.formContainer}
           onDataChange={this.onFormDataChange}
@@ -187,24 +130,9 @@ export const SignUp1 = withStyles(SignUp1Component, (theme: ThemeType) => ({
     alignItems: 'center',
     marginTop: 32,
   },
-  socialAuthContainer: {
-    marginTop: 24,
-  },
   formContainer: {
     marginTop: 48,
     paddingHorizontal: 16,
-  },
-  ewaButton: {
-    maxWidth: 72,
-    paddingHorizontal: 0,
-  },
-  ewaButtonText: {
-    color: 'white',
-    ...textStyle.button,
-  },
-  ewaButtonIcon: {
-    marginHorizontal: 0,
-    tintColor: 'white',
   },
   signInLabel: {
     flex: 1,
@@ -229,9 +157,6 @@ export const SignUp1 = withStyles(SignUp1Component, (theme: ThemeType) => ({
   },
   socialAuthHint: {
     ...textStyle.paragraph,
-  },
-  socialAuthIcon: {
-    tintColor: theme['text-basic-color'],
   },
   orContainer: {
     flexDirection: 'row',

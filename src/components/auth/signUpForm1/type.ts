@@ -4,5 +4,5 @@ export interface SignUpForm1Data {
   date: string;
   email: string;
   password: string;
-  termsAccepted: boolean;
+  //termsAccepted: boolean;
 }
