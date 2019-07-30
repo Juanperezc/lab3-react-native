@@ -106,7 +106,7 @@ class SignUp1Component extends React.Component<SignUp1Props, State> {
           size='large'
           disabled={!this.state.formData}
           onPress={this.onSignUpButtonPress}>
-          SIGN UP
+          Registrarse
         </Button>
       </ScrollableAvoidKeyboard>
     );
