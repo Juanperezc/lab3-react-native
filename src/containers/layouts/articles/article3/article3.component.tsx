@@ -86,8 +86,9 @@ class Article3Component extends React.Component<Article3Props> {
             style={themedStyle.articleAuthorLabel}
             appearance='hint'
             category='p2'>
-            {`Por ${article.author.firstName} ${article.author.lastName}`}
+            {`Por ${article.author.firstName} ${article.author.lastName} `}
           </Text>
+
           <Text
             style={themedStyle.articleDateLabel}
             appearance='hint'
