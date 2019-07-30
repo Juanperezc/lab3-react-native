@@ -17,6 +17,7 @@ import {
   DOBValidator,
   EmailValidator,
   NameValidator,
+  PhoneNumberValidator,
   PasswordValidator,
 } from '@src/core/validators';
 import { SignUpForm1Data } from './type';
@@ -37,6 +38,10 @@ interface State {
   date: string | undefined;
   email: string | undefined;
   password: string | undefined;
+  username: string | undefined;
+  phone: string | undefined;
+  country: string | undefined;
+  city: string | undefined;
   termsAccepted: boolean;
 }
 
@@ -47,7 +52,11 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     lastName: undefined,
     date: undefined,
     email: undefined,
+    phone: undefined,
+    country: undefined,
+    city: undefined,
     password: undefined,
+    username: undefined,
     termsAccepted: false,
   };
 
@@ -85,16 +94,26 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     this.setState({ password });
   };
 
+  private onUsernameInputTextChange = (username: string) => {
+    this.setState({ username });
+  };
+
+  private onPhoneInputTextChange = (phone: string) => {
+    this.setState({ phone });
+  };
+
   /* private onTermsAcceptChange = (termsAccepted: boolean) => {
     this.setState({ termsAccepted });
   }; */
 
   private isValid = (value: SignUpForm1Data): boolean => {
-    const { firstName, date, email, password} = value;
+    const { firstName,username, date, email,phone, password} = value;
 
     return firstName !== undefined
+      && username != undefined
       && date !== undefined
       && email !== undefined
+      && phone !== undefined
       && password !== undefined
   };
 
@@ -104,7 +123,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
 
   public render(): React.ReactNode {
     const { style, themedStyle, ...restProps } = this.props;
-
+    /* telefono pais ciudad username */
     return (
       <View
         style={[themedStyle.container, style]}
@@ -119,6 +138,17 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           validator={NameValidator}
           onChangeText={this.onFirstNameInputTextChange}
         />
+        <ValidationInput
+          style={[themedStyle.input, themedStyle.usernameInput]}
+          textStyle={textStyle.paragraph}
+          labelStyle={textStyle.label}
+          placeholder='Amazon1234'
+          label='Nombre de usuario/Alias'
+          autoCapitalize='words'
+          validator={NameValidator}
+          onChangeText={this.onUsernameInputTextChange}
+        />
+
         {/* <ValidationInput
           style={themedStyle.input}
           textStyle={textStyle.paragraph}
@@ -146,6 +176,15 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           label='Correo'
           validator={EmailValidator}
           onChangeText={this.onEmailInputTextChange}
+        />
+        <ValidationInput
+          style={themedStyle.input}
+          textStyle={textStyle.paragraph}
+          labelStyle={textStyle.label}
+          placeholder='+584240445678'
+          label='Telefono'
+          validator={PhoneNumberValidator}
+          onChangeText={this.onPhoneInputTextChange}
         />
         <ValidationInput
           style={themedStyle.input}
