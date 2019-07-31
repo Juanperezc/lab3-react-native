@@ -23,23 +23,23 @@ import {
 import { SignUpForm1Data } from './type';
 import {Picker} from 'react-native'
 import { SinglePickerMaterialDialog } from 'react-native-material-dialog';
-
+import { Button } from '@kitten/ui';
 var  pais  = [
 	{
-		id: 1,
-		name: 'Canada'
+		value: '1',
+		label: 'Canada'
 	},
 	{
-		id: 2,
-		name: 'Colombia'
+		value: '2',
+		label: 'Colombia'
 	},
 	{
-		id: 3,
-		name: 'Mexico'
+		value: '3',
+		label: 'Mexico'
 	},
 	{
-		id: 4,
-		name: 'Venezuela'
+		value: '4',
+		label: 'Venezuela'
 	},
 ];
 
@@ -53,6 +53,10 @@ interface ComponentProps {
 
 export type SignUpForm1Props = ThemedComponentProps & ViewProps & ComponentProps;
 
+interface Pais {
+  value: string;
+  label: string 
+}
 interface State {
   firstName: string | undefined;
   lastName: string | undefined;
@@ -64,9 +68,14 @@ interface State {
   country: string | undefined;
   city: string | undefined;
   termsAccepted: boolean;
+  visible_country: boolean;
 }
 
 class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
+
+  public paises: Array<Pais> = pais;
+
+  //seeders paises
 
   public state: State = {
     firstName: undefined,
@@ -79,6 +88,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     password: undefined,
     username: undefined,
     termsAccepted: false,
+    visible_country: false
   };
 
   public componentDidUpdate(prevProps: SignUpForm1Props, prevState: State) {
@@ -123,6 +133,9 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     this.setState({ phone });
   };
 
+  private setVisiblePais = () => {
+    this.state.visible_country = true;
+  };
   /* private onTermsAcceptChange = (termsAccepted: boolean) => {
     this.setState({ termsAccepted });
   }; */
@@ -169,17 +182,24 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           validator={NameValidator}
           onChangeText={this.onUsernameInputTextChange}
         />
+         <Button
+              style={themedStyle.forgotPasswordButton}
+              textStyle={themedStyle.forgotPasswordText}
+              appearance='ghost'
+              activeOpacity={0.75}
+              onPress={this.setVisiblePais}>
+             Test
+            </Button>
         <SinglePickerMaterialDialog
           title={'Pick one element!'}
-          items={pais.map((row, index) => ({ value: row.name, label: row.name }))}
-          visible={true}
-          selectedItem={{ value: pais[0].name, label: pais[0].name }}
-          onCancel={() => this.setState({})}
+          items={this.paises.map((row) => ({ value: row.value, label: row.label }))}
+          visible={ this.state.visible_country}
+          selectedItem={{ value: this.paises[0].value, label: this.paises[0].label }}
+          onCancel={() => this.state.visible_country = false}
           onOk={result => {
-            this.setState({ });
-            this.setState({ });
+           this.state.visible_country = false;
           }}
-        />;
+        />
         {/* <ValidationInput
           style={themedStyle.input}
           textStyle={textStyle.paragraph}
