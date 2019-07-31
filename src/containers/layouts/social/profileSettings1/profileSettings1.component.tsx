@@ -66,25 +66,25 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props> {
         <View style={themedStyle.infoSection}>
           <ProfileSetting
             style={themedStyle.profileSetting}
-            hint='First Name'
-            value={profile.firstName}
+            hint='Nombre Completo'
+            value={profile.firstName+" "+profile.lastName}
           />
-          <ProfileSetting
+          {/* <ProfileSetting
             style={themedStyle.profileSetting}
             hint='Last Name'
             value={profile.lastName}
-          />
+          /> */}
           <ProfileSetting
             style={themedStyle.profileSetting}
-            hint='Gender'
+            hint='Nombre de Usuario'
             value={profile.gender}
           />
           <ProfileSetting
             style={themedStyle.profileSetting}
-            hint='Age'
+            hint='Edad'
             value={`${profile.age}`}
           />
-          <ProfileSetting
+          {/* <ProfileSetting
             style={themedStyle.profileSetting}
             hint='Weight'
             value={`${profile.weight} kg`}
@@ -93,17 +93,27 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props> {
             style={themedStyle.profileSetting}
             hint='Height'
             value={`${profile.height} cm`}
-          />
+          /> */}
         </View>
         <View style={themedStyle.contactSection}>
           <ProfileSetting
             style={themedStyle.profileSetting}
-            hint='Email'
+            hint='Correo'
             value={profile.email}
           />
           <ProfileSetting
             style={themedStyle.profileSetting}
-            hint='Phone Number'
+            hint='Pais'
+            value={'Alemania'}
+          />
+          <ProfileSetting
+            style={themedStyle.profileSetting}
+            hint='Ciudad'
+            value={'Berlin'}
+          />
+          <ProfileSetting
+            style={themedStyle.profileSetting}
+            hint='Numero de Telefono'
             value={profile.phoneNumber}
           />
         </View>
@@ -112,7 +122,7 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props> {
           textStyle={textStyle.button}
           size='large'
           onPress={this.onButtonPress}>
-          DONE
+          Guardar Cambios
         </Button>
       </ContainerView>
     );
