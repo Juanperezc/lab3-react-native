@@ -75,7 +75,7 @@ class ForgotPasswordFormComponent extends React.Component<ForgotPasswordFormProp
         {...restProps}>
         <ValidationInput
           textStyle={textStyle.paragraph}
-          placeholder='Email'
+          placeholder='Correo'
           icon={EmailIconFill}
           validator={EmailValidator}
           onChangeText={this.onEmailInputTextChange}

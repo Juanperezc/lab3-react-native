@@ -17,8 +17,10 @@ import {
   PasswordValidator,
 } from '@src/core/validators';
 import { SignInForm1Data } from './type';
+import {Button} from '@kitten/ui'
 
 interface ComponentProps {
+  onForgotPasswordPress: () => void;
   /**
    * Will emit changes depending on validation:
    * Will be called with form value if it is valid, otherwise will be called with undefined
@@ -66,6 +68,10 @@ class SignInForm1Component extends React.Component<SignInForm1Props, State> {
     this.setState({ password });
   };
 
+  private onForgotPasswordButtonPress = () => {
+    this.props.onForgotPasswordPress();
+  };
+
   private isValid = (value: SignInForm1Data): boolean => {
     const { email, password } = value;
 
@@ -99,6 +105,16 @@ class SignInForm1Component extends React.Component<SignInForm1Props, State> {
           validator={PasswordValidator}
           onChangeText={this.onPasswordInputTextChange}
         />
+        <View style={themedStyle.forgotPasswordContainer}>
+            <Button
+              style={themedStyle.forgotPasswordButton}
+              textStyle={themedStyle.forgotPasswordText}
+              appearance='ghost'
+              activeOpacity={0.75}
+              onPress={this.onForgotPasswordButtonPress}>
+              ¿Olvidaste tu Contraseña?
+            </Button>
+          </View>
       </View>
     );
   }

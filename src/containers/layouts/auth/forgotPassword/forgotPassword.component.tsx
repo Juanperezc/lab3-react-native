@@ -60,12 +60,12 @@ class ForgotPasswordComponent extends React.Component<ForgotPasswordProps, State
             style={themedStyle.forgotPasswordLabel}
             appearance='alternative'
             category='h4'>
-            Forgot Password
+            Recuperación de Contraseña
           </Text>
           <Text
             style={themedStyle.enterEmailLabel}
             appearance='alternative'>
-            Please enter your email address
+            Por favor introduce tu dirección de correo
           </Text>
           <ForgotPasswordForm
             style={themedStyle.formContainer}
@@ -77,7 +77,7 @@ class ForgotPasswordComponent extends React.Component<ForgotPasswordProps, State
             size='giant'
             disabled={!this.state.formData}
             onPress={this.onResetPasswordButtonPress}>
-            RESET PASSWORD
+            Reinicio de Contraseña
           </Button>
         </ImageOverlay>
       </ScrollableAvoidKeyboard>

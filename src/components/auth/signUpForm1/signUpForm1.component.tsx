@@ -21,9 +21,9 @@ import {
   PasswordValidator,
 } from '@src/core/validators';
 import { SignUpForm1Data } from './type';
-import {Picker} from 'react-native'
-import { SinglePickerMaterialDialog } from 'react-native-material-dialog';
-import { Button } from '@kitten/ui';
+//import {Picker} from 'react-native'
+//import { SinglePickerMaterialDialog } from 'react-native-material-dialog';
+//import { Button } from '@kitten/ui';
 var  pais  = [
 	{
 		value: '1',
@@ -133,6 +133,14 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     this.setState({ phone });
   };
 
+  private onCountryInputTextChange = (country: string) => {
+    this.setState({ country });
+  };
+
+  private onCityInputTextChange = (city: string) => {
+    this.setState({ city });
+  };
+
   private setVisiblePais = () => {
     this.state.visible_country = true;
   };
@@ -141,12 +149,14 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
   }; */
 
   private isValid = (value: SignUpForm1Data): boolean => {
-    const { firstName,username, date, email,phone, password} = value;
+    const { firstName,username, date, email,country,city, phone, password} = value;
 
     return firstName !== undefined
       && username != undefined
       && date !== undefined
       && email !== undefined
+      && country != undefined
+      && city != undefined
       && phone !== undefined
       && password !== undefined
   };
@@ -182,15 +192,8 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           validator={NameValidator}
           onChangeText={this.onUsernameInputTextChange}
         />
-         <Button
-              style={themedStyle.forgotPasswordButton}
-              textStyle={themedStyle.forgotPasswordText}
-              appearance='ghost'
-              activeOpacity={0.75}
-              onPress={this.setVisiblePais}>
-             Test
-            </Button>
-        <SinglePickerMaterialDialog
+        
+        {/* <SinglePickerMaterialDialog
           title={'Pick one element!'}
           items={this.paises.map((row) => ({ value: row.value, label: row.label }))}
           visible={ this.state.visible_country}
@@ -199,7 +202,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           onOk={result => {
            this.state.visible_country = false;
           }}
-        />
+        /> */}
         {/* <ValidationInput
           style={themedStyle.input}
           textStyle={textStyle.paragraph}
@@ -227,6 +230,26 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           label='Correo'
           validator={EmailValidator}
           onChangeText={this.onEmailInputTextChange}
+        />
+        <ValidationInput
+          style={[themedStyle.input, themedStyle.usernameInput]}
+          textStyle={textStyle.paragraph}
+          labelStyle={textStyle.label}
+          placeholder='Seleccione su País'
+          label='País'
+          autoCapitalize='words'
+          validator={NameValidator}
+          onChangeText={this.onCountryInputTextChange}
+        />
+        <ValidationInput
+          style={[themedStyle.input, themedStyle.usernameInput]}
+          textStyle={textStyle.paragraph}
+          labelStyle={textStyle.label}
+          placeholder='Seleccione su Ciudad'
+          label='Ciudad'
+          autoCapitalize='words'
+          validator={NameValidator}
+          onChangeText={this.onCityInputTextChange}
         />
         <ValidationInput
           style={themedStyle.input}
