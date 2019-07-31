@@ -21,6 +21,27 @@ import {
   PasswordValidator,
 } from '@src/core/validators';
 import { SignUpForm1Data } from './type';
+import {Picker} from 'react-native'
+import { SinglePickerMaterialDialog } from 'react-native-material-dialog';
+
+var  pais  = [
+	{
+		id: 1,
+		name: 'Canada'
+	},
+	{
+		id: 2,
+		name: 'Colombia'
+	},
+	{
+		id: 3,
+		name: 'Mexico'
+	},
+	{
+		id: 4,
+		name: 'Venezuela'
+	},
+];
 
 interface ComponentProps {
   /**
@@ -148,7 +169,17 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           validator={NameValidator}
           onChangeText={this.onUsernameInputTextChange}
         />
-
+        <SinglePickerMaterialDialog
+          title={'Pick one element!'}
+          items={pais.map((row, index) => ({ value: row.name, label: row.name }))}
+          visible={true}
+          selectedItem={{ value: pais[0].name, label: pais[0].name }}
+          onCancel={() => this.setState({})}
+          onOk={result => {
+            this.setState({ });
+            this.setState({ });
+          }}
+        />;
         {/* <ValidationInput
           style={themedStyle.input}
           textStyle={textStyle.paragraph}
