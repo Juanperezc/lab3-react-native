@@ -25,9 +25,9 @@ interface ComponentProps {
   textStyle?: StyleProp<TextStyle>;
 }
 
-export type ArticleActivityBarProps = ThemedComponentProps & ActivityBarProps & ComponentProps;
+export type CommentActivityBarProps = ThemedComponentProps & ActivityBarProps & ComponentProps;
 
-class ArticleActivityBarComponent extends React.Component<ArticleActivityBarProps> {
+class CommentActivityBarComponent extends React.Component<CommentActivityBarProps> {
 
   public render(): React.ReactNode {
     const {
@@ -57,17 +57,11 @@ class ArticleActivityBarComponent extends React.Component<ArticleActivityBarProp
             onPress={onLikePress}>
             {`${likes}`}
           </LikeButton>
-          <ShareButton
-            textStyle={textStyle}
-            activeOpacity={0.75}
-            onPress={onLikePress}>
-            {null}
-          </ShareButton>
         </ReactionBar>
       </ActivityBar>
     );
   }
 }
 
-export const ArticleActivityBar = withStyles(ArticleActivityBarComponent, (theme: ThemeType) => ({
+export const CommentActivityBar = withStyles(CommentActivityBarComponent, (theme: ThemeType) => ({
 }));

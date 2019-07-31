@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import {
   ThemedComponentProps,
   ThemeType,
@@ -66,6 +66,7 @@ class Profile1Component extends React.Component<Profile1Props> {
 
     return (
       <ContainerView style={themedStyle.container}>
+ 
         <ProfileInfo1
           style={themedStyle.profileInfo}
           photo={profile.photo.imageSource}
@@ -86,6 +87,12 @@ class Profile1Component extends React.Component<Profile1Props> {
               onPress={this.onFollowButtonPress}>
               SEGUIR
             </Button>
+            <Button
+              style={themedStyle.followButton}
+              textStyle={textStyle.button}
+              onPress={this.onFollowButtonPress}>
+              ENVIAR MENSAJE
+            </Button> 
           </View>
         </ProfileInfo1>
         <ProfileActivityList1

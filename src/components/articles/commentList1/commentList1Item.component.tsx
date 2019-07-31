@@ -22,7 +22,7 @@ import {
 import { MoreHorizontalIconFill } from '@src/assets/icons';
 import { Comment as CommentModel } from '@src/core/model';
 import { CommentList2 } from '../commentList2';
-import { ArticleActivityBar } from '../articleActivityBar.component';
+import { CommentActivityBar } from '../commentActivityBar.component';
 
 interface ComponentProps {
   comment: CommentModel;
@@ -112,7 +112,7 @@ class CommentList1ItemComponent extends React.Component<CommentList1ItemProps, S
           category='s1'>
           {comment.text}
         </Text>
-        <ArticleActivityBar
+        <CommentActivityBar
           style={themedStyle.activityContainer}
           comments={comment.comments ? comment.comments.length : 0}
           likes={comment.likesCount}

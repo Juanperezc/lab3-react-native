@@ -12,7 +12,7 @@ import {
   Avatar,
   Text,
 } from '@kitten/ui';
-import { ArticleActivityBar } from '@src/components/articles';
+import { CommentActivityBar } from '@src/components/articles';
 import {
   ContainerView,
   textStyle,
@@ -62,7 +62,7 @@ class Article2Component extends React.Component<Article2Props> {
             category='s1'>
             {article.content}
           </Text>
-          <ArticleActivityBar
+          <CommentActivityBar
             style={themedStyle.detailsContainer}
             comments={article.comments ? article.comments.length : 0}
             likes={article.likes}
@@ -77,7 +77,7 @@ class Article2Component extends React.Component<Article2Props> {
                 {article.date}
               </Text>
             </View>
-          </ArticleActivityBar>
+          </CommentActivityBar>
       </ContainerView>
     );
   }

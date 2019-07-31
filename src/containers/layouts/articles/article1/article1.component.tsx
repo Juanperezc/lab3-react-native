@@ -6,7 +6,7 @@ import {
 } from '@kitten/theme';
 import { Text } from '@kitten/ui';
 import {
-  ArticleActivityBar,
+  CommentActivityBar,
   ArticleHeader,
 } from '@src/components/articles';
 import {
@@ -51,7 +51,7 @@ class Article1Component extends React.Component<Article1Props> {
           category='s1'>
           {article.content}
         </Text>
-        <ArticleActivityBar
+        <CommentActivityBar
           style={themedStyle.activityContainer}
           comments={commentsCount}
           likes={article.likes}
@@ -62,7 +62,7 @@ class Article1Component extends React.Component<Article1Props> {
             name={`${article.author.firstName} ${article.author.lastName}`}
             date={article.date}
           />
-        </ArticleActivityBar>
+        </CommentActivityBar>
       </ContainerView>
     );
   }
