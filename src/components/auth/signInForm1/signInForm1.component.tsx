@@ -129,4 +129,13 @@ export const SignInForm1 = withStyles(SignInForm1Component, (theme: ThemeType) =
     marginTop: 16,
     backgroundColor: 'rgba(0, 0, 0, 0.35)',
   },
+  forgotPasswordContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  forgotPasswordText: {
+    fontSize: 15,
+    color: theme['text-hint-color'],
+    ...textStyle.subtitle,
+  },
 }));
