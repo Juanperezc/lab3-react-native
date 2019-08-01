@@ -217,7 +217,7 @@ const SocialNavigationMap: NavigationRouteConfigMap = {
     screen: Profile7Container,
     navigationOptions: SocialNavigationOptions,
   },
-  ['Profile Settings 1']: {
+  ['Ajuste Perfil']: {
     screen: ProfileSettings1Container,
     navigationOptions: SocialNavigationOptions,
   },
