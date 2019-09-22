@@ -60,10 +60,11 @@ export const routes: SocialContainerData[] = [
     route: 'Profile 7',
   },
   {
-    title: 'Profile Settings',
+    title: 'Ajuste Perfil',
     description: 'Option 1',
     image: imageProfileSettings1Layout.imageSource,
-    route: 'Profile Settings 1',
+    route: 'Ajuste Perfil',
+    /* route: 'Profile Settings 1', */
   },
   {
     title: 'Profile Settings',

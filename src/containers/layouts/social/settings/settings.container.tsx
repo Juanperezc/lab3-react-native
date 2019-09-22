@@ -17,7 +17,7 @@ export class SettingsContainer extends React.Component<NavigationScreenProps, St
   private onEditProfilePress = () => {
     this.props.navigation.navigate({
       key: this.navigationKey,
-      routeName: 'Profile Settings 1',
+      routeName: 'Ajuste Perfil',
     });
   };
 
