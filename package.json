@@ -21,10 +21,11 @@
   },
   "dependencies": {
     "@eva-design/eva": "^1.0.1",
+    "axios": "^0.19.0",
     "expo": "^33.0.6",
     "expo-analytics": "^1.0.8",
     "expo-camera": "^5.0.1",
-    "expo-constants": "^5.0.1",
+    "expo-constants": "~5.0.1",
     "expo-media-library": "^5.0.1",
     "expo-permissions": "^5.0.1",
     "react": "^16.8.3",
@@ -47,6 +48,7 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "conventional-changelog-cli": "^2.0.21",
     "husky": "^1.1.2",
+    "react-native-dotenv": "^0.2.0",
     "rimraf": "^2.6.2",
     "tslint": "^5.12.1",
     "typescript": "^3.5.1"

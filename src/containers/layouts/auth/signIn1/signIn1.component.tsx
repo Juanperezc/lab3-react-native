@@ -30,7 +30,17 @@ import {
   ImageSource,
 } from '@src/assets/images';
 
+// servicios
+import {
+  UserService,
+} from '@src/core/services';
+
+// storage
+import {
+  ConfigStorage,
+} from '@src/core/services/storage';
 interface ComponentProps {
+  onForgotPasswordPress: () => void;
   onSignInPress: (formData: SignInForm1Data) => void;
   onSignUpPress: () => void;
 }
@@ -50,7 +60,21 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
   private backgroundImage: ImageSource = imageSignIn1Bg;
 
   private onSignInButtonPress = () => {
-    this.props.onSignInPress(this.state.formData);
+    UserService.login(this.state.formData).then( (res: any) => {
+      ConfigStorage.getToken().then((res) => {
+        console.log('token saved', res);
+      });
+      console.log('response', res);
+      ConfigStorage.setToken(res.data.access_token.token);
+      ConfigStorage.getToken().then((res) => {
+        console.log('token saved', res);
+      });
+
+    }).catch((err) => {
+      console.log('error', err);
+    })
+    console.log('data', this.state.formData)
+  //  this.props.onSignInPress(this.state.formData);
   };
 
   private onSignUpButtonPress = () => {
@@ -60,6 +84,11 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
   private onFormDataChange = (formData: SignInForm1Data) => {
     this.setState({ formData });
   };
+
+  private onForgotPasswordButtonPress = () => {
+    this.props.onForgotPasswordPress();
+  };
+
 
   private renderSignUpButtonIcon = (style: StyleType): React.ReactElement<ImageProps> => {
     const { themedStyle } = this.props;
@@ -94,6 +123,7 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
           </View>
           <SignInForm1
             style={themedStyle.formContainer}
+            onForgotPasswordPress={this.onForgotPasswordButtonPress}
             onDataChange={this.onFormDataChange}
           />
           <Button

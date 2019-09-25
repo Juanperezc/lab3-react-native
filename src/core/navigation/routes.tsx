@@ -27,7 +27,6 @@ import {
   AuthContainer,
   ForgotPasswordContainer,
   SignIn1Container,
-  SignIn2Container,
   SignIn3Container,
   SignIn4Container,
   SignIn5Container,
@@ -245,7 +244,6 @@ const SocialNavigationMap: NavigationRouteConfigMap = {
 
 const AuthNavigationMap: NavigationRouteConfigMap = {
   ['Sign In 1']: SignIn1Container,
-  ['Sign In 2']: SignIn2Container,
   ['Sign In 3']: SignIn3Container,
   ['Sign In 4']: SignIn4Container,
   ['Sign In 5']: SignIn5Container,
@@ -348,7 +346,7 @@ const MenuNavigator: NavigationContainer = createBottomTabNavigator({
 
 
 const AppNavigator: NavigationContainer = createStackNavigator({
- // ['Auth']: AuthNavigator,
+  ['Auth']: AuthNavigator,
   ['Home']: MenuNavigator,
   ...AuthNavigationMap,
   ...SocialNavigationMap,
