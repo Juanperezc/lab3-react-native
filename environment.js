@@ -7,7 +7,7 @@ import Constants from 'expo-constants'
 import { Platform } from "react-native";
 
 const localhost =
- Platform.OS === "ios" ? "localhost:8080" : "192.168.0.100:3333/api";
+ Platform.OS === "ios" ? "localhost:8080" : "157.56.176.217/api";
 
 const ENV = {
  dev: {
@@ -31,6 +31,7 @@ const getEnvVars = (env = Constants.manifest.releaseChannel) => {
  // This variable is set to true when react-native is running in Dev mode.
  // __DEV__ is true when run locally, but false when published.
  if (__DEV__) {
+  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'));
    return ENV.dev;
  } else if (env === 'staging') {
    return ENV.staging;

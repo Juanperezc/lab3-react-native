@@ -39,42 +39,66 @@ import {
 import {
   ConfigStorage,
 } from '@src/core/services/storage';
+
+import { Spinner } from 'react-native-ui-kitten';
+
 interface ComponentProps {
   onForgotPasswordPress: () => void;
   onSignInPress: (formData: SignInForm1Data) => void;
   onSignUpPress: () => void;
 }
 
+import Reactotron from 'reactotron-react-native'
+
 export type SignIn1Props = ThemedComponentProps & ComponentProps;
 
 interface State {
   formData: SignInForm1Data | undefined;
+  loading: boolean;
 }
 
 class SignIn1Component extends React.Component<SignIn1Props, State> {
 
   public state: State = {
     formData: undefined,
+    loading : false
   };
 
   private backgroundImage: ImageSource = imageSignIn1Bg;
 
   private onSignInButtonPress = () => {
+    this.setState({
+      loading: true
+  });
     UserService.login(this.state.formData).then( (res: any) => {
       ConfigStorage.getToken().then((res) => {
-        console.log('token saved', res);
+        //console.log('token saved', res);
+        Reactotron.log({
+          name: 'KNOCK KNOCK',
+          value: res
+        })
       });
-      console.log('response', res);
+     
       ConfigStorage.setToken(res.data.access_token.token);
       ConfigStorage.getToken().then((res) => {
-        console.log('token saved', res);
+        Reactotron.display({
+          name: 'Token saved',
+          value: 'res'
+        })
+        this.setState({
+          loading: false
+      });
+        this.props.onSignInPress(this.state.formData);
       });
 
     }).catch((err) => {
+      this.setState({
+        loading: false
+    });
       console.log('error', err);
     })
-    console.log('data', this.state.formData)
-  //  this.props.onSignInPress(this.state.formData);
+   // console.log('data', this.state.formData)
+  // 
   };
 
   private onSignUpButtonPress = () => {
@@ -82,7 +106,7 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
   };
 
   private onFormDataChange = (formData: SignInForm1Data) => {
-    this.setState({ formData });
+    this.setState({ formData: formData });
   };
 
   private onForgotPasswordButtonPress = () => {
@@ -95,7 +119,15 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
 
     return ArrowForwardIconOutline({ ...style, ...themedStyle.signUpButtonIcon });
   };
-
+    public renderSpinner() {
+      if (this.state.loading) {
+          return (
+            <Spinner  />
+          );
+      } else {
+          return null;
+      }
+  }
   public render(): React.ReactNode {
     const { themedStyle } = this.props;
 
@@ -105,6 +137,7 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
           style={themedStyle.container}
           source={this.backgroundImage.imageSource}>
           <View style={themedStyle.signInContainer}>
+          {this.renderSpinner()}
             <Text
               style={themedStyle.signInLabel}
               category='h4'>
