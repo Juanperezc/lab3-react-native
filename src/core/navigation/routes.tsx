@@ -321,8 +321,9 @@ const AuthNavigator: NavigationContainer = createStackNavigator(
 //*beta
 const ProfileNavigator: NavigationContainer = createStackNavigator(
   {
-    ['Profile']: Profile1Container,
-  }, {
+    ['Perfil']: Profile1Container,
+  }, 
+  {
     defaultNavigationOptions: MenuNavigationOptions,
   }
 );

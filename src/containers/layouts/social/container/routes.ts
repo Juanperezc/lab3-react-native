@@ -18,7 +18,7 @@ import { SocialContainerData } from './type';
 
 export const routes: SocialContainerData[] = [
   {
-    title: 'Profile',
+    title: 'Perfil',
     description: 'Option 1',
     image: imageProfile1Layout.imageSource,
     route: 'Profile 1',

@@ -31,6 +31,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "^0.59.8",
+    "react-native-awesome-alerts": "^1.2.0",
     "react-native-keyboard-aware-scroll-view": "^0.8.0",
     "react-native-material-dialog": "^0.7.6",
     "react-native-searchable-dropdown": "^1.1.1",

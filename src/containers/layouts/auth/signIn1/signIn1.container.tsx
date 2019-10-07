@@ -14,6 +14,13 @@ export class SignIn1Container extends React.Component<NavigationScreenProps> {
       });
   };
 
+  private isLogin = () => {
+    this.props.navigation.navigate({
+      routeName: 'Home',
+      key: this.navigationKey,
+    });
+  };
+
   private onSignUpPress = () => {
     this.props.navigation.navigate({
       routeName: 'Sign Up 1',
@@ -28,7 +35,9 @@ export class SignIn1Container extends React.Component<NavigationScreenProps> {
   };
   public render(): React.ReactNode {
     return (
+      
       <SignIn1
+        isLogin={this.isLogin}
         onSignInPress={this.onSignInPress}
         onSignUpPress={this.onSignUpPress}
         onForgotPasswordPress={this.onForgotPasswordPress}

@@ -19,11 +19,13 @@ import {
   ContainerView,
   textStyle,
 } from '@src/components/common';
+import Reactotron from 'reactotron-react-native';
 
 interface ComponentProps {
   profile: Profile;
   onUploadPhotoButtonPress: () => void;
   onButtonPress: () => void;
+  onLogoutPress: () => void;
 }
 
 export type ProfileSettings1Props = ThemedComponentProps & ComponentProps;
@@ -33,7 +35,14 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props> {
   private onButtonPress = () => {
     this.props.onButtonPress();
   };
-
+  private onLogoutPress = () => {
+      Reactotron.log({
+        name: 'Response Click',
+        value: 'response'
+      });
+     this.props.onLogoutPress();
+    
+  };
   private onPhotoButtonPress = () => {
     this.props.onUploadPhotoButtonPress();
   };
@@ -124,6 +133,13 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props> {
           onPress={this.onButtonPress}>
           Guardar Cambios
         </Button>
+        <Button
+          style={themedStyle.buttonRed}
+          textStyle={textStyle.button}
+          size='large'
+          onPress={this.onLogoutPress}>
+          Cerrar sesión
+        </Button>
       </ContainerView>
     );
   }
@@ -163,6 +179,11 @@ export const ProfileSettings1 = withStyles(ProfileSettings1Component, (theme: Th
     backgroundColor: theme['background-basic-color-4'],
   },
   button: {
+    marginHorizontal: 24,
+    marginVertical: 24,
+  },
+  buttonRed: {
+    backgroundColor: '#ff0000',
     marginHorizontal: 24,
     marginVertical: 24,
   },

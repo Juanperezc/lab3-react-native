@@ -46,29 +46,33 @@ interface ComponentProps {
   onForgotPasswordPress: () => void;
   onSignInPress: (formData: SignInForm1Data) => void;
   onSignUpPress: () => void;
+  isLogin: () => void;
 }
 
-import Reactotron from 'reactotron-react-native'
-
+import Reactotron from 'reactotron-react-native';
+import AwesomeAlert from 'react-native-awesome-alerts';
 export type SignIn1Props = ThemedComponentProps & ComponentProps;
 
 interface State {
   formData: SignInForm1Data | undefined;
   loading: boolean;
+  errorLogin: boolean;
 }
 
 class SignIn1Component extends React.Component<SignIn1Props, State> {
 
   public state: State = {
     formData: undefined,
-    loading : false
+    loading : false,
+    errorLogin : false
+    
   };
 
   private backgroundImage: ImageSource = imageSignIn1Bg;
 
   private onSignInButtonPress = () => {
     this.setState({
-      loading: true
+      loading : true
   });
     UserService.login(this.state.formData).then( (res: any) => {
       ConfigStorage.getToken().then((res) => {
@@ -93,14 +97,29 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
 
     }).catch((err) => {
       this.setState({
-        loading: false
+        loading: false,
+        errorLogin : true
     });
       console.log('error', err);
     })
    // console.log('data', this.state.formData)
   // 
   };
-
+  public componentDidMount() {
+    ConfigStorage.getToken().then((res) => {
+      if (res != null){
+        Reactotron.log({
+          name: 'Token detectado',
+          value: res
+        })
+        this.props.isLogin();
+      }
+    });
+  }
+ 
+   public componentWillUnmount() {
+  
+   }
   private onSignUpButtonPress = () => {
     this.props.onSignUpPress();
   };
@@ -130,14 +149,38 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
   }
   public render(): React.ReactNode {
     const { themedStyle } = this.props;
-
+    if (this.state.errorLogin){
+      return (  <AwesomeAlert
+        show={this.state.errorLogin}
+        title="Error"
+        message="Usuario o contraseña invalido"
+        closeOnTouchOutside={true}
+        closeOnHardwareBackPress={false}
+        showConfirmButton={true}
+        confirmText="Ok"
+        confirmButtonColor="#DD6B55"
+        onConfirmPressed={() => {
+          this.setState({
+            errorLogin : false
+        });
+        }}
+        onDismiss ={() => {
+          this.setState({
+            errorLogin : false
+        });
+        }}
+        />);
+    }
     return (
       <ScrollableAvoidKeyboard>
         <ImageBackground
           style={themedStyle.container}
           source={this.backgroundImage.imageSource}>
           <View style={themedStyle.signInContainer}>
-          {this.renderSpinner()}
+            <AwesomeAlert
+            show={this.state.loading}
+            showProgress={true}
+            />
             <Text
               style={themedStyle.signInLabel}
               category='h4'>

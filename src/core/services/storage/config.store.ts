@@ -3,10 +3,12 @@ import { AsyncStorage } from 'react-native';
 
 class ConfigStoreType {
 
-  public setToken(token: string): Promise<void> {
-    return AsyncStorage.setItem('token', token);
+  public setToken(token: string) {
+    AsyncStorage.setItem('token', token);
   }
-
+  public removeToken() {
+    AsyncStorage.removeItem('token');
+  }
   public getToken(): Promise<string> {
     return AsyncStorage.getItem('token') as Promise<string>;
   }
