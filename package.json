@@ -28,6 +28,7 @@
     "expo-constants": "~5.0.1",
     "expo-media-library": "^5.0.1",
     "expo-permissions": "^5.0.1",
+    "ramda": "^0.26.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "^0.59.8",
