@@ -138,14 +138,14 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
 
     return ArrowForwardIconOutline({ ...style, ...themedStyle.signUpButtonIcon });
   };
-    public renderSpinner() {
-      if (this.state.loading) {
-          return (
-            <Spinner  />
-          );
-      } else {
-          return null;
-      }
+  public renderSpinner() {
+    if (this.state.loading) {
+        return (
+          <Spinner  />
+        );
+    } else {
+        return null;
+    }
   }
   public render(): React.ReactNode {
     const { themedStyle } = this.props;

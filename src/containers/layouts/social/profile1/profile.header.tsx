@@ -58,7 +58,7 @@ class ProfileHeaderComponent extends React.Component<ProfileHeaderProps> {
       <SafeAreaView style={themedStyle.container}>
         <TopNavigation
           alignment='center'
-          title='Mensajes'
+          title='Perfil'
          /*  leftControl={this.renderLeftControl()} */
           rightControls={this.renderRightControls()}
         />

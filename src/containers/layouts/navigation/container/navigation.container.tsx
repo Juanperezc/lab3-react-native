@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationScreenProps } from 'react-navigation';
 import { Navigation } from './navigation.component';
 import { routes } from './routes';
-
+import NavigationService from '@src/core/services/navigation.service';
 interface State {
   selectedLayoutIndex: number;
 }
@@ -32,6 +32,10 @@ export class NavigationContainer extends React.Component<NavigationScreenProps, 
   public render(): React.ReactNode {
     return (
       <Navigation
+      ref={(navigatorRef) => {
+        
+        NavigationService.setTopLevelNavigator(navigatorRef);
+      }}
         data={this.data}
         selectedLayoutIndex={this.state.selectedLayoutIndex}
         onItemSelect={this.onItemSelect}

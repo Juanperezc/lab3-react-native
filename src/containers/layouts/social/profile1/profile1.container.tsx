@@ -16,9 +16,18 @@ import { ChatHeaderNavigationStateParams, ChatHeader } from '@src/components/mes
 import { conversation5 } from '@src/core/data/conversation';
 import { ProfileHeader } from './profile.header';
 import { TopNavigationElement } from '@src/core/navigation/options';
+import Reactotron from 'reactotron-react-native';
+import AwesomeAlert from 'react-native-awesome-alerts';
+
+
+import {
+  UserService,
+} from '@src/core/services';
+import { BemProfile } from '@src/core/model/bem_profile.model';
+
 
 interface State {
-  profile: Profile;
+  profile: BemProfile;
   socials: ProfileSocials;
   posts: Post[];
 }
@@ -30,7 +39,7 @@ interface ConversationsListNavigationStateParams {
 export class Profile1Container extends React.Component<NavigationScreenProps, State> {
 
   public state: State = {
-    profile: profile1,
+    profile: null,
     socials: profileSocials1,
     posts: posts,
   };
@@ -62,10 +71,26 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
   };
 
   public componentWillMount(): void {
+    console.log('mount profile');
+    UserService.me().then( (res: any) => {
+      console.log('response', res);
+      Reactotron.log({
+        name: 'mount profile',
+        value: res
+      });
+      this.setState({
+        profile: res.data.user
+      })
+    }).catch((err) => {
+      console.log('error', err);
+    });
     this.props.navigation.setParams({
       onConfigPress: this.onConfigPress,
 
     });
+  }
+  public componentDidUpdate(): void{
+    console.log('update profile');
   }
   private onConfigPress = (): void => {
     this.props.navigation.navigate({
@@ -91,18 +116,27 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
   };
 
   public render(): React.ReactNode {
-    return (
-      <Profile1
-        profile={this.state.profile}
-        socials={this.state.socials}
-        posts={this.state.posts}
-        onFollowersPress={this.onFollowersPress}
-        onFollowingPress={this.onFollowingPress}
-        onPostsPress={this.onPostsPress}
-        onFollowPress={this.onFollowPress}
-        onPostPress={this.onPostPress}
-        onPostLikePress={this.onPostLikePress}
-      />
-    );
+    if (this.state.profile != null){
+      return (
+        <Profile1
+          me={true}
+          profile={this.state.profile}
+          socials={this.state.socials}
+          posts={this.state.posts}
+          onFollowersPress={this.onFollowersPress}
+          onFollowingPress={this.onFollowingPress}
+          onPostsPress={this.onPostsPress}
+          onFollowPress={this.onFollowPress}
+          onPostPress={this.onPostPress}
+          onPostLikePress={this.onPostLikePress}
+        />
+      );
+    }else{
+      return (<AwesomeAlert
+        show={true}
+        showProgress={true}
+        />)
+    }
+   
   }
 }

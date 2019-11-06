@@ -3,6 +3,11 @@ import { NavigationScreenProps } from 'react-navigation';
 import { SignInForm1Data } from '@src/components/auth';
 import { SignIn1 } from './signIn1.component';
 
+// servicios
+import {
+  UserService,
+} from '@src/core/services';
+
 export class SignIn1Container extends React.Component<NavigationScreenProps> {
 
   private navigationKey: string = 'SignIn1Container';
@@ -35,7 +40,6 @@ export class SignIn1Container extends React.Component<NavigationScreenProps> {
   };
   public render(): React.ReactNode {
     return (
-      
       <SignIn1
         isLogin={this.isLogin}
         onSignInPress={this.onSignInPress}
@@ -45,3 +49,4 @@ export class SignIn1Container extends React.Component<NavigationScreenProps> {
     );
   }
 }
+/* export default WithErrorHandler(SignIn1Container, UserService); */

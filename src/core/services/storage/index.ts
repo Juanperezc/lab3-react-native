@@ -1,3 +1,3 @@
 
 
-export { ConfigStorage } from './config.store';
+export  { ConfigStorage } from './config.store';

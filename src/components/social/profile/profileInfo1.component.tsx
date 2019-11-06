@@ -16,7 +16,7 @@ import {
 import { textStyle } from '@src/components/common';
 
 interface ComponentProps {
-  photo: ImageSourcePropType;
+  photo: string;
   name: string;
   location: string;
   children?: React.ReactNode;
@@ -35,7 +35,7 @@ class ProfileInfo1Component extends React.Component<ProfileInfo1Props> {
         {...restProps}>
         <Avatar
           size='giant'
-          source={photo}
+          source={{uri :photo}}
         />
         <View style={themedStyle.detailsContainer}>
           <Text

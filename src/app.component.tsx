@@ -18,7 +18,7 @@ import {
   themes,
   ThemeStore,
 } from '@src/core/themes';
-
+import NavigationService from '@src/core/services/navigation.service'
 const images: ImageRequireSource[] = [
   require('./assets/images/source/image-profile-1.jpg'),
   require('./assets/images/source/image-profile-2.jpg'),
@@ -39,6 +39,7 @@ const fonts: { [key: string]: number } = {
   'opensans-light': require('./assets/fonts/opensans-light.ttf'),
   'opensans-regular': require('./assets/fonts/opensans-regular.ttf'),
 };
+
 
 const assets: Assets = {
   images: images,
@@ -82,13 +83,15 @@ export default class App extends React.Component<{}, State> {
     };
 
     return (
-      <ApplicationLoader assets={assets}>
+      <ApplicationLoader assets={assets} >
         <ThemeContext.Provider value={contextValue}>
           <ApplicationProvider
             mapping={mapping}
             theme={themes[this.state.theme]}>
             <DynamicStatusBar currentTheme={this.state.theme}/>
-            <Router onNavigationStateChange={this.onNavigationStateChange}/>
+            <Router  onNavigationStateChange={this.onNavigationStateChange} ref={navigatorRef => {
+              NavigationService.setTopLevelNavigator( navigatorRef );
+            }}/>
           </ApplicationProvider>
         </ThemeContext.Provider>
       </ApplicationLoader>

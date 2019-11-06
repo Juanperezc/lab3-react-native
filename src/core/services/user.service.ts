@@ -2,7 +2,7 @@
 import axios, { AxiosStatic } from 'axios';
 //import { REACT_APP_API } from 'react-native-dotenv'
 import getEnvVars from '../../../environment';
-import AxiosInstance  from './interceptor';
+ import AxiosInstance  from './interceptor'; 
 
 const { apiUrl } = getEnvVars();
 export class UserService {
@@ -10,7 +10,7 @@ export class UserService {
 
    static login(values) : Promise<AxiosStatic>{
      console.log('http://' + apiUrl + '/auth/login');
-     return AxiosInstance.post('http://' + apiUrl + '/auth/login', values);
+     return AxiosInstance.post('auth/login', values);
    /*  return axios.post('http://' + apiUrl + '/auth/login', values, {
       headers:{
           'Content-Type': 'application/json',
@@ -20,12 +20,13 @@ export class UserService {
   }
 
   static me() : Promise<AxiosStatic>{
-    console.log('http://' + apiUrl + '/auth/login');
-   return axios.get('http://' + apiUrl + '/user/me',  {
+    console.log('http://' + apiUrl + '/api/me');//
+    return AxiosInstance.get('user/me');
+   /* return axios.get('http://' + apiUrl + '/user/me',  {
      headers:{
          'Content-Type': 'application/json',
          'Accept': 'application/json'}
-   });
+   }); */
    
  }
  /*  public static select = <T>(config: { [key in ThemeKey | 'default']?: T },

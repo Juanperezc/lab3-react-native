@@ -20,9 +20,11 @@ import {
   ContainerView,
   textStyle,
 } from '@src/components/common';
+import { BemProfile } from '@src/core/model/bem_profile.model';
 
 interface ComponentProps {
-  profile: ProfileModel;
+  me: boolean;
+  profile: BemProfile;
   socials: ProfileSocialsModel;
   posts: PostModel[];
   onFollowPress: () => void;
@@ -62,37 +64,43 @@ class Profile1Component extends React.Component<Profile1Props> {
   };
 
   public render(): React.ReactNode {
-    const { themedStyle, profile, socials, posts } = this.props;
+    const { themedStyle, profile, socials, posts, me } = this.props;
 
     return (
       <ContainerView style={themedStyle.container}>
  
         <ProfileInfo1
           style={themedStyle.profileInfo}
-          photo={profile.photo.imageSource}
-          name={`${profile.firstName} ${profile.lastName}`}
-          location={profile.location}>
+          photo={profile.photo}
+          name={profile.full_name}
+          location={profile.city}>
           <View style={themedStyle.parametersContainer}>
             <ProfileSocials
-              followers={socials.followers}
-              following={socials.following}
+              followers={profile.followers.length}
+              following={profile.following.length}
               posts={socials.posts}
               onFollowersPress={this.onFollowersButtonPress}
               onFollowingPress={this.onFollowingButtonPress}
               onPostsPress={this.onPostsButtonPress}
             />
-            <Button
+            {
+              !me && <Button
               style={themedStyle.followButton}
               textStyle={textStyle.button}
-              onPress={this.onFollowButtonPress}>
+              onPress={this.onFollowButtonPress}
+              >
               SEGUIR
             </Button>
-            <Button
+            }
+            {
+              !me && <Button
               style={themedStyle.followButton}
               textStyle={textStyle.button}
               onPress={this.onFollowButtonPress}>
               ENVIAR MENSAJE
             </Button> 
+            }
+            
           </View>
         </ProfileInfo1>
         <ProfileActivityList1

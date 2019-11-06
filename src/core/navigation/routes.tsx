@@ -1,5 +1,5 @@
-import React from 'react';
 import { useScreens } from 'react-native-screens';
+
 import {
   createAppContainer,
   createBottomTabNavigator,
@@ -364,8 +364,11 @@ const AppNavigator: NavigationContainer = createStackNavigator({
 
 const createAppRouter = (container: NavigationContainer): NavigationContainer => {
   useScreens();
+ /*  NavigationService.setTopLevelNavigator(container) */
   return createAppContainer(container);
 };
+
+
 
 
 export const Router: NavigationContainer = createAppRouter(AppNavigator);
