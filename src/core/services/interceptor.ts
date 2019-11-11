@@ -15,11 +15,11 @@ const AxiosInstance = axios.create({
         'Accept': 'application/json'
     }
 })
-
+//
 AxiosInstance.interceptors.request.use(
     async (config) => {
       // Do something before request is sent
-        const token = await AsyncStorage.getItem('token');
+        const token = await ConfigStorage.getToken();
       config.headers["Authorization"] = "Bearer " + token;
       return config;
     },

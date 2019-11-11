@@ -20,31 +20,68 @@ import {
   textStyle,
 } from '@src/components/common';
 import Reactotron from 'reactotron-react-native';
+import { BemProfile } from '@src/core/model/bem_profile.model';
+
+import {
+  ValidationInput,
+} from '@src/components/common';
+
+import {
+  DOBValidator,
+  EmailValidator,
+  NameValidator,
+  PhoneNumberValidator,
+  PasswordValidator,
+} from '@src/core/validators';
+import { profile1 } from '@src/core/data/profile';
+
 
 interface ComponentProps {
-  profile: Profile;
+  profile: BemProfile;
   onUploadPhotoButtonPress: () => void;
   onButtonPress: () => void;
   onLogoutPress: () => void;
 }
 
+interface ComponentProps {
+  /**
+   * Will emit changes depending on validation:
+   * Will be called with form value if it is valid, otherwise will be called with undefined
+   */
+  onDataChange: (value: any | undefined) => void;
+}
 export type ProfileSettings1Props = ThemedComponentProps & ComponentProps;
 
-class ProfileSettings1Component extends React.Component<ProfileSettings1Props> {
+interface State {
+  full_name: string | undefined;
+  phone: string | undefined;
+ 
+}
+
+class ProfileSettings1Component extends React.Component<ProfileSettings1Props, State> {
 
   private onButtonPress = () => {
     this.props.onButtonPress();
   };
+
+   public state: State = {
+    full_name: undefined,
+    phone: undefined,
+
+  };
+
   private onLogoutPress = () => {
-      Reactotron.log({
-        name: 'Response Click',
-        value: 'response'
-      });
      this.props.onLogoutPress();
-    
   };
   private onPhotoButtonPress = () => {
     this.props.onUploadPhotoButtonPress();
+  };
+  private onFullnameInputTextChange = (full_name: string) => {
+
+    this.setState({ full_name : full_name });
+  };
+  private onPhoneInputTextChange = (phone: string) => {
+    this.setState({ phone: phone });
   };
 
   private renderPhotoButton = (): React.ReactElement<ButtonProps> => {
@@ -59,6 +96,48 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props> {
       />
     );
   };
+  public componentWillMount(): void {
+  console.log('didMount');
+  this.setState({ 
+  full_name : this.props.profile.full_name ,
+  phone: this.props.profile.phone,
+  });
+  }
+
+  public componentDidUpdate(prevProps: ProfileSettings1Props, prevState: State) {
+    console.log('update', this.state); 
+  /*   this.setState({
+      photo: this.props.profile.photo
+    }); */
+    const oldFormValid: boolean = this.isValid(prevState);
+    const newFormValid: boolean = this.isValid(this.state);
+
+    const isStateChanged: boolean = this.state !== prevState;
+    const becomeValid: boolean = !oldFormValid && newFormValid;
+    const becomeInvalid: boolean = oldFormValid && !newFormValid;
+    const remainValid: boolean = oldFormValid && newFormValid;
+     if (becomeValid) {
+      this.props.onDataChange(this.state);
+    } else if (becomeInvalid) {
+      this.props.onDataChange(undefined);
+    } else if (isStateChanged && remainValid) {
+      this.props.onDataChange(this.state);
+    } 
+  }
+
+  private isValid = (value: State): boolean => {
+    const { full_name, phone } = value;
+
+    return full_name !== undefined
+    && phone !== undefined
+/*       && username != undefined
+      && date !== undefined
+      && email !== undefined
+      && country != undefined
+      && city != undefined
+      && phone !== undefined
+      && password !== undefined */
+  };
 
   public render(): React.ReactNode {
     const { themedStyle, profile } = this.props;
@@ -68,21 +147,28 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props> {
         <View style={themedStyle.photoSection}>
           <ProfilePhoto
             style={themedStyle.photo}
-            source={profile.photo.imageSource}
+            source={{uri :profile.photo}}
             button={this.renderPhotoButton}
           />
         </View>
         <View style={themedStyle.infoSection}>
-          <ProfileSetting
+      {/*     <ProfileSetting
             style={themedStyle.profileSetting}
             hint='Nombre Completo'
-            value={profile.firstName+" "+profile.lastName}
-          />
-          {/* <ProfileSetting
-            style={themedStyle.profileSetting}
-            hint='Last Name'
-            value={profile.lastName}
+            value={profile.full_name}
           /> */}
+          <ValidationInput
+          style={[themedStyle.input, themedStyle.fullnameInput, textStyle.label]}
+          textStyle={textStyle.paragraph}
+          labelStyle={textStyle.label}
+          placeholder=''
+          value={this.state.full_name}
+          label='Nombre Completo'
+          autoCapitalize='words'
+          validator={NameValidator}
+          onChangeText={this.onFullnameInputTextChange}
+        />
+ 
           <ProfileSetting
             style={themedStyle.profileSetting}
             hint='Nombre de Usuario'
@@ -90,8 +176,8 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props> {
           />
           <ProfileSetting
             style={themedStyle.profileSetting}
-            hint='Edad'
-            value={`${profile.age}`}
+            hint='Fecha de nacimiento'
+            value={`${profile.date_birth}`}
           />
           {/* <ProfileSetting
             style={themedStyle.profileSetting}
@@ -118,13 +204,24 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props> {
           <ProfileSetting
             style={themedStyle.profileSetting}
             hint='Ciudad'
-            value={'Berlin'}
+            value={profile.city}
           />
-          <ProfileSetting
+           <ValidationInput
+          style={[themedStyle.input, themedStyle.fullnameInput, textStyle.label]}
+          textStyle={textStyle.paragraph}
+          labelStyle={textStyle.label}
+          placeholder=''
+          value={this.state.phone}
+          label='Telefono'
+          autoCapitalize='words'
+          validator={PhoneNumberValidator}
+          onChangeText={this.onPhoneInputTextChange}
+        />
+        {/*   <ProfileSetting
             style={themedStyle.profileSetting}
             hint='Numero de Telefono'
-            value={profile.phoneNumber}
-          />
+            value={profile.phone}
+          /> */}
         </View>
         <Button
           style={themedStyle.button}
@@ -187,4 +284,21 @@ export const ProfileSettings1 = withStyles(ProfileSettings1Component, (theme: Th
     marginHorizontal: 24,
     marginVertical: 24,
   },
+  input: {
+    marginTop: 16,
+  },
+  fullnameInput: {
+    marginTop: 10,
+  },
+  termsCheckBox: {
+    marginTop: 20,
+  },
+  termsCheckBoxText: {
+    fontSize: 11,
+    color: theme['text-hint-color'],
+    ...textStyle.paragraph,
+  },
+  label:{
+    marginTop: 16
+  }
 }));

@@ -71,9 +71,15 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
   };
 
   public componentWillMount(): void {
+    this.load()
+    this.props.navigation.addListener('willFocus', this.load)
+    
+  }
+  load = () => {
+    console.log('on view');
     console.log('mount profile');
     UserService.me().then( (res: any) => {
-      console.log('response', res);
+      //console.log('response', res);
       Reactotron.log({
         name: 'mount profile',
         value: res
@@ -86,15 +92,17 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
     });
     this.props.navigation.setParams({
       onConfigPress: this.onConfigPress,
-
     });
   }
   public componentDidUpdate(): void{
-    console.log('update profile');
+/*     console.log('update profile'); */
   }
   private onConfigPress = (): void => {
     this.props.navigation.navigate({
-      routeName: 'Ajuste Perfil'
+      routeName: 'Ajuste Perfil',
+      params: {
+       'profile' :  this.state.profile
+      }
     });
   };
   private onFollowersPress = () => {

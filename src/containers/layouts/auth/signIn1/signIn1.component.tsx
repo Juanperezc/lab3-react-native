@@ -63,18 +63,18 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
 
   public state: State = {
     formData: undefined,
-    loading : false,
-    errorLogin : false
-    
+    loading: false,
+    errorLogin: false
+
   };
 
   private backgroundImage: ImageSource = imageSignIn1Bg;
 
   private onSignInButtonPress = () => {
     this.setState({
-      loading : true
-  });
-    UserService.login(this.state.formData).then( (res: any) => {
+      loading: true
+    });
+    UserService.login(this.state.formData).then((res: any) => {
       ConfigStorage.getToken().then((res) => {
         //console.log('token saved', res);
         Reactotron.log({
@@ -82,32 +82,35 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
           value: res
         })
       });
-     
+
       ConfigStorage.setToken(res.data.access_token.token);
-      ConfigStorage.getToken().then((res) => {
+      ConfigStorage.setUser(res.data.user);
+      this.setState({
+        loading: false
+      });
+      ConfigStorage.getUser().then((res) => {
         Reactotron.display({
           name: 'Token saved',
-          value: 'res'
+          value: res
         })
-        this.setState({
-          loading: false
-      });
-        this.props.onSignInPress(this.state.formData);
-      });
+      }
+      );
+
+      this.props.onSignInPress(this.state.formData);
 
     }).catch((err) => {
       this.setState({
         loading: false,
-        errorLogin : true
-    });
+        errorLogin: true
+      });
       console.log('error', err);
     })
-   // console.log('data', this.state.formData)
-  // 
+    // console.log('data', this.state.formData)
+    // 
   };
   public componentDidMount() {
     ConfigStorage.getToken().then((res) => {
-      if (res != null){
+      if (res != null) {
         Reactotron.log({
           name: 'Token detectado',
           value: res
@@ -116,10 +119,10 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
       }
     });
   }
- 
-   public componentWillUnmount() {
-  
-   }
+
+  public componentWillUnmount() {
+
+  }
   private onSignUpButtonPress = () => {
     this.props.onSignUpPress();
   };
@@ -140,17 +143,17 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
   };
   public renderSpinner() {
     if (this.state.loading) {
-        return (
-          <Spinner  />
-        );
+      return (
+        <Spinner />
+      );
     } else {
-        return null;
+      return null;
     }
   }
   public render(): React.ReactNode {
     const { themedStyle } = this.props;
-    if (this.state.errorLogin){
-      return (  <AwesomeAlert
+    if (this.state.errorLogin) {
+      return (<AwesomeAlert
         show={this.state.errorLogin}
         title="Error"
         message="Usuario o contraseña invalido"
@@ -161,15 +164,15 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
         confirmButtonColor="#DD6B55"
         onConfirmPressed={() => {
           this.setState({
-            errorLogin : false
-        });
+            errorLogin: false
+          });
         }}
-        onDismiss ={() => {
+        onDismiss={() => {
           this.setState({
-            errorLogin : false
-        });
+            errorLogin: false
+          });
         }}
-        />);
+      />);
     }
     return (
       <ScrollableAvoidKeyboard>
@@ -178,8 +181,8 @@ class SignIn1Component extends React.Component<SignIn1Props, State> {
           source={this.backgroundImage.imageSource}>
           <View style={themedStyle.signInContainer}>
             <AwesomeAlert
-            show={this.state.loading}
-            showProgress={true}
+              show={this.state.loading}
+              showProgress={true}
             />
             <Text
               style={themedStyle.signInLabel}

@@ -28,6 +28,7 @@
     "expo-constants": "~5.0.1",
     "expo-media-library": "^5.0.1",
     "expo-permissions": "^5.0.1",
+    "form-data": "^3.0.0",
     "history": "^4.10.1",
     "ramda": "^0.26.1",
     "react": "^16.8.3",

@@ -20,8 +20,10 @@ export class ConfigStorage extends React.Component<NavigationScreenProps, State>
     return AsyncStorage.getItem('token');
   }
 
-  public static setUser(user: string) {
-    AsyncStorage.setItem('user', user);
+  public static setUser(user: any) {
+    console.log('user', user);
+   
+    AsyncStorage.setItem('user',  JSON.stringify(user));
   }
   public static removeUser() {
     AsyncStorage.removeItem('user');
@@ -31,8 +33,8 @@ export class ConfigStorage extends React.Component<NavigationScreenProps, State>
     this.removeUser();
    
   }
-  public static getUser(): Promise<string> {
-    return AsyncStorage.getItem('user') as Promise<string>;
+  public static async getUser(): Promise<any> {
+    return AsyncStorage.getItem('user') as Promise<any>;
   }
 }
 
