@@ -16,14 +16,14 @@ import {
   ActivityAuthoring,
   textStyle,
 } from '@src/components/common';
-import { Article } from '@src/core/model';
+import { Article, BemArticle } from '@src/core/model';
 
 // @ts-ignore (override `onPress` prop)
 interface ComponentProps extends TouchableOpacityProps {
-  article: Article;
-  onPress: (article: Article) => void;
-  onCommentPress: (article: Article) => void;
-  onLikePress: (article: Article) => void;
+  article: BemArticle;
+  onPress: (article: BemArticle) => void;
+  onCommentPress: (article: BemArticle) => void;
+  onLikePress: (article: BemArticle) => void;
 }
 
 export type ArticleList1ItemProps = ThemedComponentProps & ComponentProps;
@@ -44,7 +44,7 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
 
   public render(): React.ReactNode {
     const { style, themedStyle, article, ...restProps } = this.props;
-    const commentsCount: number = article.comments ? article.comments.length : 0;
+    const commentsCount: number = article.commentaries ? article.commentaries.length : 0;
 
     return (
       <TouchableOpacity
@@ -54,7 +54,7 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
         onPress={this.onPress}>
         <ImageBackground
           style={themedStyle.image}
-          source={article.image.imageSource}
+          source={{ uri: article.photo}}
         />
         <View style={themedStyle.infoContainer}>
           <Text
@@ -66,20 +66,20 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
             style={themedStyle.descriptionLabel}
             appearance='hint'
             category='s1'>
-            {article.description}
+            {article.body}
           </Text>
         </View>
         <ArticleActivityBar
           style={themedStyle.activityContainer}
           comments={commentsCount}
-          likes={article.likes}
+          likes={article.likes.length}
           onCommentPress={this.onCommentsButtonPress}
           onLikePress={this.onLikeButtonPress}>
-          <ActivityAuthoring
+          {/* <ActivityAuthoring
             photo={article.author.photo.imageSource}
             name={`${article.author.firstName} ${article.author.lastName}`}
             date={article.date}
-          />
+          /> */}
         </ArticleActivityBar>
       </TouchableOpacity>
     );

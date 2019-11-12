@@ -21,18 +21,19 @@ import {
   textStyle,
 } from '@src/components/common';
 import { BemProfile } from '@src/core/model/bem_profile.model';
-
+import { BemArticle }from '@src/core/model';
 interface ComponentProps {
   me: boolean;
   profile: BemProfile;
   socials: ProfileSocialsModel;
-  posts: PostModel[];
+
   onFollowPress: () => void;
   onFollowersPress: () => void;
   onFollowingPress: () => void;
   onPostsPress: () => void;
-  onPostPress: (index: number) => void;
-  onPostLikePress: (index: number) => void;
+  onPostPress: (article: BemArticle) => void;
+  onPostLikePress: (article: BemArticle) => void;
+  onItemCommentPress: (article: BemArticle) => void;
 }
 
 export type Profile1Props = ThemedComponentProps & ComponentProps;
@@ -54,17 +55,20 @@ class Profile1Component extends React.Component<Profile1Props> {
   private onFollowButtonPress = () => {
     this.props.onFollowPress();
   };
-
-  private onItemPress = (index: number) => {
-    this.props.onPostPress(index);
+  private onItemCommentPress = (article: BemArticle) => {
+    this.props.onItemCommentPress(article);
   };
 
-  private onItemLikePress = (index: number) => {
-    this.props.onPostLikePress(index);
+  private onItemPress = (article: BemArticle) => {
+    this.props.onPostPress(article);
+  };
+
+  private onItemLikePress = (article: BemArticle) => {
+    this.props.onPostLikePress(article);
   };
 
   public render(): React.ReactNode {
-    const { themedStyle, profile, socials, posts, me } = this.props;
+    const { themedStyle, profile, me } = this.props;
 
     return (
       <ContainerView style={themedStyle.container}>
@@ -78,7 +82,7 @@ class Profile1Component extends React.Component<Profile1Props> {
             <ProfileSocials
               followers={profile.followers.length}
               following={profile.following.length}
-              posts={socials.posts}
+              posts={profile.publications.length}
               onFollowersPress={this.onFollowersButtonPress}
               onFollowingPress={this.onFollowingButtonPress}
               onPostsPress={this.onPostsButtonPress}
@@ -105,9 +109,10 @@ class Profile1Component extends React.Component<Profile1Props> {
         </ProfileInfo1>
         <ProfileActivityList1
           style={themedStyle.feed}
-          data={posts}
+          data={profile.publications}
           onItemPress={this.onItemPress}
           onItemLikePress={this.onItemLikePress}
+          onItemCommentPress={this.onItemCommentPress}
         />
       </ContainerView>
     );

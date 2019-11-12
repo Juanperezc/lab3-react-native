@@ -6,36 +6,36 @@ import {
   withStyles,
 } from '@kitten/theme';
 import { List } from '@kitten/ui';
-import { Article } from '@src/core/model';
+import { Article, BemArticle } from '@src/core/model';
 import {
   ArticleList1Item,
   ArticleList1ItemProps,
 } from './articleList1Item.component';
 
 interface ComponentProps {
-  articles: Article[];
-  onItemPress: (article: Article) => void;
-  onItemLikePress: (article: Article) => void;
-  onItemCommentPress: (article: Article) => void;
+  articles: BemArticle[];
+  onItemPress: (article: BemArticle) => void;
+  onItemLikePress: (article: BemArticle) => void;
+  onItemCommentPress: (article: BemArticle) => void;
 }
 
 export type ArticleList1Props = ThemedComponentProps & ComponentProps;
 
 class ArticleList1Component extends React.Component<ArticleList1Props> {
 
-  private onItemPress = (article: Article) => {
+  private onItemPress = (article: BemArticle) => {
     this.props.onItemPress(article);
   };
 
-  private onItemLikePress = (article: Article) => {
+  private onItemLikePress = (article: BemArticle) => {
     this.props.onItemLikePress(article);
   };
 
-  private onItemCommentPress = (article: Article) => {
+  private onItemCommentPress = (article: BemArticle) => {
     this.props.onItemCommentPress(article);
   };
 
-  private renderItem = (info: ListRenderItemInfo<Article>): React.ReactElement<ArticleList1ItemProps> => {
+  private renderItem = (info: ListRenderItemInfo<BemArticle>): React.ReactElement<ArticleList1ItemProps> => {
     const { themedStyle } = this.props;
 
     return (

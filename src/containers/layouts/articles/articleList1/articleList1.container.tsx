@@ -1,20 +1,20 @@
 import React from 'react';
 import { NavigationScreenProps } from 'react-navigation';
-import { Article } from '@src/core/model';
-import { articles } from '@src/core/data/article';
+import { Article, BemArticle } from '@src/core/model';
+/* import { articles } from '@src/core/data/article'; */
 import { ArticleList1 } from './articleList1.component';
 
 interface State {
-  articles: Article[];
+  articles: BemArticle[];
 }
 
 export class ArticleList1Container extends React.Component<NavigationScreenProps, State> {
   private navigationKey: string = 'ArticleList1Container';
   public state: State = {
-    articles: articles,
+    articles: null/* articles */,
   };
 
-  private onItemPress = (article: Article) => {
+  private onItemPress = (article: BemArticle) => {
     console.log('test');
     this.props.navigation.navigate({
       routeName: 'Detalle publicación',
@@ -22,18 +22,18 @@ export class ArticleList1Container extends React.Component<NavigationScreenProps
     });
   };
 
-  private onItemLikePress = (article: Article) => {
+  private onItemLikePress = (article: BemArticle) => {
 
   };
 
-  private onItemCommentPress = (article: Article) => {
+  private onItemCommentPress = (article: BemArticle) => {
 
   };
 
   public render(): React.ReactNode {
     return (
       <ArticleList1
-        articles={articles}
+        articles={null}
         onItemPress={this.onItemPress}
         onItemLikePress={this.onItemLikePress}
         onItemCommentPress={this.onItemCommentPress}

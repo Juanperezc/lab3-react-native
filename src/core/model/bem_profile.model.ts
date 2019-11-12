@@ -1,4 +1,5 @@
 import { ImageSource } from '@src/assets/images';
+import { BemArticle } from './bem_article.model';
 
 export enum Gender {
   MALE = 'Male',
@@ -15,6 +16,7 @@ export interface BemProfile {
   city: string;
   alias: string;
   rol: string;
+  publications: BemArticle[];
   followers: BemProfile[];
   following: BemProfile[];
  // threads:

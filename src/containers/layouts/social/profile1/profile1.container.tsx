@@ -4,12 +4,13 @@ import {
   Profile,
   ProfileSocials,
   Post,
+  BemArticle,
 } from '@src/core/model';
 import {
   profile1,
   profileSocials1,
 } from '@src/core/data/profile';
-import { posts } from '@src/core/data/post';
+/* import { posts } from '@src/core/data/post'; */
 import { Profile1 } from './profile1.component';
 import { NavigationScreenConfig } from 'react-navigation';
 import { ChatHeaderNavigationStateParams, ChatHeader } from '@src/components/messaging';
@@ -29,7 +30,7 @@ import { BemProfile } from '@src/core/model/bem_profile.model';
 interface State {
   profile: BemProfile;
   socials: ProfileSocials;
-  posts: Post[];
+
 }
 interface ConversationsListNavigationStateParams {
   onBack: () => void;
@@ -41,7 +42,7 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
   public state: State = {
     profile: null,
     socials: profileSocials1,
-    posts: posts,
+   
   };
   static navigationOptions: NavigationScreenConfig<any> = ({ navigation, screenProps }) => {
     const conversationHeaderConfig: ConversationsListNavigationStateParams = {
@@ -117,10 +118,12 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
   private onFollowPress = () => {
   };
 
-  private onPostPress = (index: number) => {
+  private onPostPress = (article: BemArticle) => {
+  };
+  private onItemCommentPress = (article: BemArticle) => {
   };
 
-  private onPostLikePress = (index: number) => {
+  private onPostLikePress = (article: BemArticle) => {
   };
 
   public render(): React.ReactNode {
@@ -130,12 +133,13 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
           me={true}
           profile={this.state.profile}
           socials={this.state.socials}
-          posts={this.state.posts}
+        
           onFollowersPress={this.onFollowersPress}
           onFollowingPress={this.onFollowingPress}
           onPostsPress={this.onPostsPress}
           onFollowPress={this.onFollowPress}
           onPostPress={this.onPostPress}
+          onItemCommentPress={this.onItemCommentPress}
           onPostLikePress={this.onPostLikePress}
         />
       );
