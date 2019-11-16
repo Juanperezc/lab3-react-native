@@ -133,7 +133,6 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
           me={true}
           profile={this.state.profile}
           socials={this.state.socials}
-        
           onFollowersPress={this.onFollowersPress}
           onFollowingPress={this.onFollowingPress}
           onPostsPress={this.onPostsPress}

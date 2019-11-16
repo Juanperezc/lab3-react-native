@@ -19,6 +19,7 @@ import {
   ProfileActivityList1ItemProps,
 } from './profileActivityList1Item.component';
 import { ArticleList1Item } from '@src/containers/layouts/articles/articleList1/articleList1Item.component';
+import { BemProfile } from '@src/core/model/bem_profile.model';
 
 // @ts-ignore (override `renderItem` prop)
 interface ComponentProps extends ListProps {

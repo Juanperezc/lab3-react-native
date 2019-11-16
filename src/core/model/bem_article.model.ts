@@ -1,5 +1,6 @@
 import { ImageSource } from '@src/assets/images';
 import { Comment } from './comment.model';
+import { BemProfile } from './bem_profile.model';
 /* import { BemProfile } from './profile.model'; */
 
 export interface BemArticle {
@@ -9,6 +10,7 @@ export interface BemArticle {
   body: string;
   photo: string;
   category: string;
+  author: BemProfile;
 /*   author: Profile; */
   create_at: string;
   updated_at: string;

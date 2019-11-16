@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
   View,
+  ViewProps,
 } from 'react-native';
 import {
   ThemedComponentProps,
@@ -17,10 +18,12 @@ import {
   textStyle,
 } from '@src/components/common';
 import { Article, BemArticle } from '@src/core/model';
+import { BemProfile } from '@src/core/model/bem_profile.model';
 
 // @ts-ignore (override `onPress` prop)
 interface ComponentProps extends TouchableOpacityProps {
   article: BemArticle;
+ /*  author: BemProfile; */
   onPress: (article: BemArticle) => void;
   onCommentPress: (article: BemArticle) => void;
   onLikePress: (article: BemArticle) => void;
@@ -42,6 +45,19 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
     this.props.onLikePress(this.props.article);
   };
 
+  private renderAuthor = (): React.ReactElement<ViewProps> => {
+    const { article } = this.props;
+
+    if (article.author != null) {
+      return (<ActivityAuthoring
+        photo={{uri : article.author.photo}}
+        name={`${article.author.full_name}`}
+        date={article.create_at}
+      /> )
+    } else {
+      return null;
+    }
+  };
   public render(): React.ReactNode {
     const { style, themedStyle, article, ...restProps } = this.props;
     const commentsCount: number = article.commentaries ? article.commentaries.length : 0;
@@ -75,11 +91,10 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
           likes={article.likes.length}
           onCommentPress={this.onCommentsButtonPress}
           onLikePress={this.onLikeButtonPress}>
-          {/* <ActivityAuthoring
-            photo={article.author.photo.imageSource}
-            name={`${article.author.firstName} ${article.author.lastName}`}
-            date={article.date}
-          /> */}
+            {this.renderAuthor()}
+        
+          
+          
         </ArticleActivityBar>
       </TouchableOpacity>
     );
