@@ -27,6 +27,7 @@ interface ComponentProps extends ListProps {
   onItemPress: (article: BemArticle) => void;
   onItemLikePress: (article: BemArticle) => void;
   onItemCommentPress: (article: BemArticle) => void;
+  onItemSharePress: (article: BemArticle) => void;
   renderItem?: (info: ListRenderItemInfo<ImageSourcePropType>, style: StyleType) => React.ReactElement<any>;
 }
 
@@ -50,7 +51,9 @@ class ProfileActivityList1Component extends React.Component<ProfileActivityList1
   private onItemLikePress = (article: BemArticle) => {
     this.props.onItemLikePress(article);
   };
-
+  private onItemSharePress = (article: BemArticle) => {
+    this.props.onItemSharePress(article);
+  };
   private onItemCommentPress = (article: BemArticle) => {
     this.props.onItemCommentPress(article);
   };
@@ -65,6 +68,7 @@ class ProfileActivityList1Component extends React.Component<ProfileActivityList1
       onPress={this.onItemPress}
       onLikePress={this.onItemLikePress}
       onCommentPress={this.onItemCommentPress}
+      onSharePress={this.onItemSharePress}
     />
     
     /*   <ProfileActivityList1Item

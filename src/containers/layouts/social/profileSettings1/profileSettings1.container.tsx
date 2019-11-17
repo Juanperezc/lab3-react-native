@@ -38,12 +38,9 @@ export class ProfileSettings1Container extends React.Component<NavigationScreenP
   };
   constructor(props) {
     super(props);
-   
-
   }
   private onFormDataChange = (formData: any) => {
     console.log('form data', formData);
-    
      this.setState({ formData }); 
   };
 

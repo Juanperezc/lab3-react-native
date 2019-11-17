@@ -17,6 +17,7 @@ interface ComponentProps {
   onItemPress: (article: BemArticle) => void;
   onItemLikePress: (article: BemArticle) => void;
   onItemCommentPress: (article: BemArticle) => void;
+  onItemSharePress: (article: BemArticle) => void;
 }
 
 export type ArticleList1Props = ThemedComponentProps & ComponentProps;
@@ -34,7 +35,9 @@ class ArticleList1Component extends React.Component<ArticleList1Props> {
   private onItemCommentPress = (article: BemArticle) => {
     this.props.onItemCommentPress(article);
   };
-
+  private onItemSharePress = (article: BemArticle) => {
+    this.props.onItemSharePress(article);
+  };
   private renderItem = (info: ListRenderItemInfo<BemArticle>): React.ReactElement<ArticleList1ItemProps> => {
     const { themedStyle } = this.props;
 
@@ -43,6 +46,7 @@ class ArticleList1Component extends React.Component<ArticleList1Props> {
         style={themedStyle.item}
         article={info.item}
         onPress={this.onItemPress}
+        onSharePress={this.onItemSharePress}
         onLikePress={this.onItemLikePress}
         onCommentPress={this.onItemCommentPress}
       />

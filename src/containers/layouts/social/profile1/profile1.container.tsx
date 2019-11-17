@@ -38,7 +38,7 @@ interface ConversationsListNavigationStateParams {
 }
 
 export class Profile1Container extends React.Component<NavigationScreenProps, State> {
-
+  private navigationKey: string = 'Profile1Container';
   public state: State = {
     profile: null,
     socials: profileSocials1,
@@ -113,16 +113,27 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
   };
 
   private onPostsPress = () => {
+
   };
 
   private onFollowPress = () => {
   };
 
   private onPostPress = (article: BemArticle) => {
+    console.log('test');
+    this.props.navigation.navigate({
+      routeName: 'Detalle publicación',
+      params: {
+        'article_id' :  article._id
+       },
+      key: this.navigationKey,
+    });
   };
   private onItemCommentPress = (article: BemArticle) => {
   };
-
+  private onItemSharePress = (article: BemArticle) => {
+    console.log('share', article);
+  };
   private onPostLikePress = (article: BemArticle) => {
   };
 
@@ -139,6 +150,7 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
           onFollowPress={this.onFollowPress}
           onPostPress={this.onPostPress}
           onItemCommentPress={this.onItemCommentPress}
+          onItemSharePress={this.onItemSharePress}
           onPostLikePress={this.onPostLikePress}
         />
       );

@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": null,
-  "packagerPid": null,
+  "packagerPort": 19001,
+  "packagerPid": 3361,
   "expoServerNgrokUrl": "https://cm-e57.juanperezc.lab3-react-native.exp.direct",
   "packagerNgrokUrl": "https://packager.cm-e57.juanperezc.lab3-react-native.exp.direct",
-  "ngrokPid": 12364,
+  "ngrokPid": 3484,
   "webpackServerPort": null
 }

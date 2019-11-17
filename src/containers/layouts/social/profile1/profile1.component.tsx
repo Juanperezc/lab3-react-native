@@ -34,6 +34,7 @@ interface ComponentProps {
   onPostPress: (article: BemArticle) => void;
   onPostLikePress: (article: BemArticle) => void;
   onItemCommentPress: (article: BemArticle) => void;
+  onItemSharePress: (article: BemArticle) => void;
 }
 
 export type Profile1Props = ThemedComponentProps & ComponentProps;
@@ -62,7 +63,9 @@ class Profile1Component extends React.Component<Profile1Props> {
   private onItemPress = (article: BemArticle) => {
     this.props.onPostPress(article);
   };
-
+  private onItemSharePress = (article: BemArticle) => {
+    this.props.onItemSharePress(article);
+  };
   private onItemLikePress = (article: BemArticle) => {
     this.props.onPostLikePress(article);
   };
@@ -113,6 +116,7 @@ class Profile1Component extends React.Component<Profile1Props> {
           onItemPress={this.onItemPress}
           onItemLikePress={this.onItemLikePress}
           onItemCommentPress={this.onItemCommentPress}
+          onItemSharePress={this.onItemSharePress}
         />
       </ContainerView>
     );

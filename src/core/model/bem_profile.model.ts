@@ -11,9 +11,10 @@ export interface BemProfile {
   email: string;
   full_name: string;
   photo: string;
-  date_birth: Date | string;
+  birth_date: Date | string;
   phone: string;
   city: string;
+  country: string;
   alias: string;
   rol: string;
   publications: BemArticle[];

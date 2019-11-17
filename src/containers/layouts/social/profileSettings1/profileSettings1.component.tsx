@@ -20,6 +20,7 @@ import {
   textStyle,
 } from '@src/components/common';
 import Reactotron from 'reactotron-react-native';
+import moment from "moment";
 import { BemProfile } from '@src/core/model/bem_profile.model';
 
 import {
@@ -177,7 +178,7 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props, S
           <ProfileSetting
             style={themedStyle.profileSetting}
             hint='Fecha de nacimiento'
-            value={`${profile.date_birth}`}
+            value={`${moment(profile.birth_date).format("DD/MM/YYYY")}`}
           />
           {/* <ProfileSetting
             style={themedStyle.profileSetting}
@@ -199,7 +200,7 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props, S
           <ProfileSetting
             style={themedStyle.profileSetting}
             hint='Pais'
-            value={'Alemania'}
+            value={profile.country}
           />
           <ProfileSetting
             style={themedStyle.profileSetting}

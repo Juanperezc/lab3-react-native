@@ -29,6 +29,9 @@ export class ArticleList1Container extends React.Component<NavigationScreenProps
   private onItemCommentPress = (article: BemArticle) => {
 
   };
+  private onItemSharePress = (article: BemArticle) => {
+
+  };
 
   public render(): React.ReactNode {
     return (
@@ -37,6 +40,7 @@ export class ArticleList1Container extends React.Component<NavigationScreenProps
         onItemPress={this.onItemPress}
         onItemLikePress={this.onItemLikePress}
         onItemCommentPress={this.onItemCommentPress}
+        onItemSharePress={this.onItemSharePress}
       />
     );
   }

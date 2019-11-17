@@ -17,10 +17,11 @@ import {
   CommentList1Item,
   CommentList1ItemProps,
 } from './commentList1Item.component';
+import { BemComment } from '@src/core/model/bem_comment.model';
 
 // @ts-ignore (override `renderItem` prop)
 interface ComponentProps extends ListProps {
-  data: Comment[];
+  data: BemComment[];
   onLikePress: (index: number) => void;
   onMorePress: (index: number) => void;
   onReplyMorePress: (index: number) => void;
@@ -52,7 +53,7 @@ class CommentList1Component extends React.Component<CommentsList1Props> {
     return data.length - 1 === index;
   };
 
-  private renderListItemElement = (comment: Comment): ListItemElement => {
+  private renderListItemElement = (comment: BemComment): ListItemElement => {
     const { themedStyle } = this.props;
 
     return (

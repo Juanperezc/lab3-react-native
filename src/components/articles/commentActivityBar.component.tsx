@@ -45,12 +45,12 @@ class CommentActivityBarComponent extends React.Component<CommentActivityBarProp
       <ActivityBar {...restProps}>
         {children}
         <ReactionBar>
-          <CommentsButton
+       {/*    <CommentsButton
             textStyle={textStyle}
             activeOpacity={0.75}
             onPress={onCommentPress}>
             {`${comments}`}
-          </CommentsButton>
+          </CommentsButton> */}
           <LikeButton
             textStyle={textStyle}
             activeOpacity={0.75}

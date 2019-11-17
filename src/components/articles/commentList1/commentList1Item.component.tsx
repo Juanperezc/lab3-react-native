@@ -23,9 +23,10 @@ import { MoreHorizontalIconFill } from '@src/assets/icons';
 import { Comment as CommentModel } from '@src/core/model';
 import { CommentList2 } from '../commentList2';
 import { CommentActivityBar } from '../commentActivityBar.component';
+import { BemComment } from '@src/core/model/bem_comment.model';
 
 interface ComponentProps {
-  comment: CommentModel;
+  comment: BemComment;
   onMorePress: (index: number) => void;
   onLikePress: (index: number) => void;
   onReplyMorePress: (index: number) => void;
@@ -62,12 +63,12 @@ class CommentList1ItemComponent extends React.Component<CommentList1ItemProps, S
   private onReplyMorePress = (index: number) => {
     this.props.onReplyMorePress(index);
   };
-
+/* 
   private shouldRenderReplies = (): boolean => {
     const { comment } = this.props;
 
     return comment.comments && comment.comments.length !== 0 && this.state.repliesVisible;
-  };
+  }; */
 
   private renderMoreIcon = (): React.ReactElement<ImageProps> => {
     const { themedStyle } = this.props;
@@ -75,7 +76,7 @@ class CommentList1ItemComponent extends React.Component<CommentList1ItemProps, S
     return MoreHorizontalIconFill(themedStyle.moreIcon);
   };
 
-  private renderReplyList = (): RepliesElement => {
+/*   private renderReplyList = (): RepliesElement => {
     const { themedStyle, comment } = this.props;
 
     return (
@@ -85,41 +86,41 @@ class CommentList1ItemComponent extends React.Component<CommentList1ItemProps, S
         onItemMorePress={this.onReplyMorePress}
       />
     );
-  };
+  }; */
 
   public render(): React.ReactNode {
     const { style, themedStyle, comment } = this.props;
 
-    const repliesElement: RepliesElement | null = this.shouldRenderReplies() && this.renderReplyList();
+   /*  const repliesElement: RepliesElement | null = this.shouldRenderReplies() && this.renderReplyList(); */
 
     return (
       <ListItem style={[themedStyle.container, style]}>
         <View style={themedStyle.authorContainer}>
           <ActivityAuthoring
             style={themedStyle.activityAuthoring}
-            photo={comment.author.photo.imageSource}
-            name={`${comment.author.firstName} ${comment.author.lastName}`}
+            photo={{uri: comment.author.photo}}
+            name={`${comment.author.full_name}`}
             date={comment.date}
           />
-          <TouchableOpacity
+        {/*   <TouchableOpacity
             activeOpacity={0.75}
             onPress={this.onMorePress}>
             {this.renderMoreIcon()}
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <Text
           style={themedStyle.commentLabel}
           category='s1'>
-          {comment.text}
+          {comment.body}
         </Text>
         <CommentActivityBar
           style={themedStyle.activityContainer}
-          comments={comment.comments ? comment.comments.length : 0}
-          likes={comment.likesCount}
+          comments={0}
+          likes={comment.likes.length}
           onCommentPress={this.onCommentPress}
           onLikePress={this.onLikePress}
         />
-        {repliesElement}
+      {/*   {repliesElement} */}
       </ListItem>
     );
   }

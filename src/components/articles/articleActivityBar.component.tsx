@@ -22,6 +22,7 @@ interface ComponentProps {
   likes: number;
   onCommentPress: () => void;
   onLikePress: () => void;
+  onSharePress: () => void;
   textStyle?: StyleProp<TextStyle>;
 }
 
@@ -37,6 +38,7 @@ class ArticleActivityBarComponent extends React.Component<ArticleActivityBarProp
       likes,
       onCommentPress,
       onLikePress,
+      onSharePress,
       children,
       ...restProps
     } = this.props;
@@ -60,7 +62,7 @@ class ArticleActivityBarComponent extends React.Component<ArticleActivityBarProp
           <ShareButton
             textStyle={textStyle}
             activeOpacity={0.75}
-            onPress={onLikePress}>
+            onPress={onSharePress}>
             {null}
           </ShareButton>
         </ReactionBar>
