@@ -12,6 +12,7 @@ import { CheckBox } from '@kitten/ui';
 import {
   textStyle,
   ValidationInput,
+  SelectComponent,
 } from '@src/components/common';
 import {
   DOBValidator,
@@ -251,14 +252,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           validator={NameValidator}
           onChangeText={this.onCityInputTextChange}
         />
-        <ValidationInput
-          style={themedStyle.input}
-          textStyle={textStyle.paragraph}
-          labelStyle={textStyle.label}
-          placeholder='+584240445678'
-          label='Telefono'
-          validator={PhoneNumberValidator}
-          onChangeText={this.onPhoneInputTextChange}
+        <SelectComponent
         />
         <ValidationInput
           style={themedStyle.input}
