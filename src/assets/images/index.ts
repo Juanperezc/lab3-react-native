@@ -12,28 +12,8 @@ export const imageSignIn1Bg: ImageSource = {
   imageSource: require('./source/image-background-sign-in-1.jpg'),
 };
 
-export const imageSignIn3Bg: ImageSource = {
-  imageSource: require('./source/image-background-auth-3.jpg'),
-};
-
-export const imageSignIn4Bg: ImageSource = {
-  imageSource: require('./source/image-background-auth-4.jpg'),
-};
-
-export const imageSignIn5Bg: ImageSource = {
-  imageSource: require('./source/image-background-sign-in-5.jpg'),
-};
-
 export const imageSignUp1Bg: ImageSource = {
   imageSource: require('./source/image-background-sign-up-1.jpg'),
-};
-
-export const imageSignUp3Bg: ImageSource = {
-  imageSource: require('./source/image-background-auth-3.jpg'),
-};
-
-export const imageSignUp4Bg: ImageSource = {
-  imageSource: require('./source/image-background-auth-4.jpg'),
 };
 
 export const imageForgotPasswordBg: ImageSource = {
@@ -144,36 +124,8 @@ export const imageSignIn1Layout: ImageSource = {
   imageSource: require('./source/image-layout-sign-in-1.jpg'),
 };
 
-export const imageSignIn2Layout: ImageSource = {
-  imageSource: require('./source/image-layout-sign-in-2.jpg'),
-};
-
-export const imageSignIn3Layout: ImageSource = {
-  imageSource: require('./source/image-layout-sign-in-3.jpg'),
-};
-
-export const imageSignIn4Layout: ImageSource = {
-  imageSource: require('./source/image-layout-sign-in-4.jpg'),
-};
-
-export const imageSignIn5Layout: ImageSource = {
-  imageSource: require('./source/image-layout-sign-in-5.jpg'),
-};
-
 export const imageSignUp1Layout: ImageSource = {
   imageSource: require('./source/image-layout-sign-up-1.jpg'),
-};
-
-export const imageSignUp2Layout: ImageSource = {
-  imageSource: require('./source/image-layout-sign-up-2.jpg'),
-};
-
-export const imageSignUp3Layout: ImageSource = {
-  imageSource: require('./source/image-layout-sign-up-3.jpg'),
-};
-
-export const imageSignUp4Layout: ImageSource = {
-  imageSource: require('./source/image-layout-sign-up-4.jpg'),
 };
 
 export const imageForgotPasswordLayout: ImageSource = {
@@ -184,39 +136,8 @@ export const imageProfile1Layout: ImageSource = {
   imageSource: require('./source/image-layout-profile-1.jpg'),
 };
 
-export const imageProfile2Layout: ImageSource = {
-  imageSource: require('./source/image-layout-profile-2.jpg'),
-};
-
-export const imageProfile3Layout: ImageSource = {
-  imageSource: require('./source/image-layout-profile-3.jpg'),
-};
-export const imageProfile4Layout: ImageSource = {
-  imageSource: require('./source/image-layout-profile-4.jpg'),
-};
-
-export const imageProfile5Layout: ImageSource = {
-  imageSource: require('./source/image-layout-profile-5.jpg'),
-};
-
-export const imageProfile6Layout: ImageSource = {
-  imageSource: require('./source/image-layout-profile-6.jpg'),
-};
-
-export const imageProfile7Layout: ImageSource = {
-  imageSource: require('./source/image-layout-profile-7.jpg'),
-};
-
 export const imageProfileSettings1Layout: ImageSource = {
   imageSource: require('./source/image-layout-profile-settings-1.jpg'),
-};
-
-export const imageProfileSettings2Layout: ImageSource = {
-  imageSource: require('./source/image-layout-profile-settings-2.jpg'),
-};
-
-export const imageProfileSettings3Layout: ImageSource = {
-  imageSource: require('./source/image-layout-profile-settings-3.jpg'),
 };
 
 export const imageFeed1Layout: ImageSource = {
