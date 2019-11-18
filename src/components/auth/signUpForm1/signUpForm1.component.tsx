@@ -69,11 +69,10 @@ interface State {
   country: string | undefined;
   city: string | undefined;
   termsAccepted: boolean;
-  visible_country: boolean;
+  cityDisabled: boolean;
 }
 
 class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
-
   public paises: Array<Pais> = pais;
 
   //seeders paises
@@ -89,7 +88,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     password: undefined,
     username: undefined,
     termsAccepted: false,
-    visible_country: false
+    cityDisabled: true
   };
 
   public componentDidUpdate(prevProps: SignUpForm1Props, prevState: State) {
@@ -142,12 +141,14 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     this.setState({ city });
   };
 
-  private setVisiblePais = () => {
-    this.state.visible_country = true;
-  };
   /* private onTermsAcceptChange = (termsAccepted: boolean) => {
     this.setState({ termsAccepted });
   }; */
+
+  private onSelectedOption = (country: string) => {
+    this.setState({ country });
+  };
+
 
   private isValid = (value: SignUpForm1Data): boolean => {
     const { firstName,username, date, email,country,city, phone, password} = value;
@@ -235,19 +236,18 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
         {/* Pais */}
         <SelectComponent
         style={themedStyle.input}
-        tStyle={themedStyle}
-        textStyle={textStyle.paragraph}
-        title="Pais"
-        labelStyle={textStyle.label}
-        captionTextStyle={textStyle.paragraph}
-        label='Contraseña'
-        placeholder='Contraseña'
-        caption={this.passwordCaption()}
-        secureTextEntry={true}
+        themedStyle={themedStyle}
+        title="País"
+        disabled={false}
+        onSelectedCountry = {this.onSelectedOption}
         />
         {/* Ciudad */}
-      {/*   <SelectComponent
-        /> */}
+        <SelectComponent
+        style={themedStyle.input}
+        themedStyle={themedStyle}
+        title="Ciudad"
+        disabled={true}
+        /> 
         <ValidationInput
           style={themedStyle.input}
           textStyle={textStyle.paragraph}
