@@ -46,12 +46,11 @@ export class SelectComponent extends React.Component<SelectComponentProps> {
   };
 
   public render(): React.ReactNode {
-    console.log(this.props)
     const { style, themedStyle, title, ...restProps } = this.props;
+    console.log(this.props)
     return (
-      <Layout style={styles.container}>
-         <Text
-          category='h5'>
+      <Layout style={[themedStyle.container,style]}>
+         <Text style={[themedStyle.label,style]}>
           {title}
         </Text>
         <Select
@@ -66,12 +65,14 @@ export class SelectComponent extends React.Component<SelectComponentProps> {
   }
 }
 export const SelectComp = withStyles(SelectComponent, (theme: ThemeType) => ({
-    container: {},
+    container: {
+        height: 90,
+        padding: 0,
+        width: 330
+      },
+      label:{
+        fontWeight: 'normal',fontSize: 11,
+        color: theme['text-hint-color']
+      }
   }));
   
-const styles = StyleSheet.create({
-  container: {
-    height: 230,
-    padding: 16,
-  },
-});
