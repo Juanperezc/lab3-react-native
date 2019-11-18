@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@eva-design/eva": "^1.0.1",
+    "@ui-kitten/eva-icons": "^4.2.0",
     "axios": "^0.19.0",
     "expo": "^33.0.6",
     "expo-analytics": "^1.0.8",
@@ -39,6 +40,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.8.0",
     "react-native-material-dialog": "^0.7.6",
     "react-native-searchable-dropdown": "^1.1.1",
+    "react-native-svg": "^9.13.3",
     "react-native-ui-kitten": "^4.2.0",
     "react-native-web": "^0.11.5",
     "react-navigation": "^3.11.0"
