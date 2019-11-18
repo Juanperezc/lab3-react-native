@@ -136,9 +136,34 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
   private onItemSharePress = (article: BemArticle) => {
     console.log('share', article);
     this.load();
-  
   };
-  private onPostLikePress = (article: BemArticle) => {
+  private onPostLikePress = (article: BemArticle, publication_like: any, action: any) => {
+
+      let publications = this.state.profile.publications.slice();
+      const index = publications.findIndex((pub) => pub._id == article._id);
+      console.log('index',index);
+   
+      if (index !== -1){
+        if (action == "store"){
+        publications[index].likes.push(publication_like);
+        }else if (action == "delete"){
+        publications[index].likes.splice(index, 1);
+        }
+        Reactotron.log({
+          name: 'test',
+          value: publications
+        })
+       /*  console.log('article_with_like', publications); */
+       this.setState({
+          profile : {
+            ...this.state.profile,
+            publications
+          }
+        }) 
+      }
+     /*  this.state.profile */
+
+/*     this.load(); */
   };
 
   public render(): React.ReactNode {

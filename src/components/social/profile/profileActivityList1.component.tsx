@@ -29,7 +29,7 @@ import AwesomeAlert from 'react-native-awesome-alerts';
 interface ComponentProps extends ListProps {
   data: BemArticle[];
   onItemPress: (article: BemArticle) => void;
-  onItemLikePress: (article: BemArticle) => void;
+  onItemLikePress: (article: BemArticle, publication_like: any, action: any) => void;
   onItemCommentPress: (article: BemArticle) => void;
   onItemSharePress: (article: BemArticle) => void;
   renderItem?: (info: ListRenderItemInfo<ImageSourcePropType>, style: StyleType) => React.ReactElement<any>;
@@ -57,8 +57,20 @@ class ProfileActivityList1Component extends React.Component<ProfileActivityList1
   };
 
   private onItemLikePress = (article: BemArticle) => {
-    this.props.onItemLikePress(article);
-  };
+   /*  this.setState({loading: true}) */
+    PublicationService.like({publication_id: article._id}).then((res: any) =>{
+       console.log('response', res.data);
+     /*  this.setState({loading: false}) */
+/*        ToastAndroid.show('Publicación compartida !', ToastAndroid.SHORT); */
+        this.props.onItemLikePress(article,res.data.publication_like, res.data.action); 
+      /*  this.load(); */
+       },(err) => {
+         console.error('err')
+       })
+    };
+  
+
+
   private onItemSharePress = (article: BemArticle) => {
     this.setState({loading: true})
     PublicationService.share({publication_id: article._id}).then((res) =>{
@@ -70,11 +82,11 @@ class ProfileActivityList1Component extends React.Component<ProfileActivityList1
        },(err) => {
          console.error('err')
        })
- 
   };
   private onItemCommentPress = (article: BemArticle) => {
     this.props.onItemCommentPress(article);
   };
+
   private renderListItemElement = (item: BemArticle): ListItemElement => {
     const { themedStyle } = this.props;
     /* const { photo, create_at, likes } = item; */

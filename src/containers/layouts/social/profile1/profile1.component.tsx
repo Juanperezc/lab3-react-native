@@ -31,7 +31,7 @@ interface ComponentProps {
   onFollowingPress: () => void;
   onPostsPress: () => void;
   onPostPress: (article: BemArticle) => void;
-  onPostLikePress: (article: BemArticle) => void;
+  onPostLikePress: (article: BemArticle, publication_like: any, action: any) => void;
   onItemCommentPress: (article: BemArticle) => void;
   onItemSharePress: (article: BemArticle) => void;
 }
@@ -65,8 +65,8 @@ class Profile1Component extends React.Component<Profile1Props> {
   private onItemSharePress = (article: BemArticle) => {
     this.props.onItemSharePress(article);
   };
-  private onItemLikePress = (article: BemArticle) => {
-    this.props.onPostLikePress(article);
+  private onItemLikePress = (article: BemArticle, publication_like: any, action: any) => {
+    this.props.onPostLikePress(article,publication_like,action);
   };
 
   public render(): React.ReactNode {
