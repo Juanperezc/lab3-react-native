@@ -235,7 +235,9 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
         {/* Pais */}
         <SelectComponent
         style={themedStyle.input}
+        tStyle={themedStyle}
         textStyle={textStyle.paragraph}
+        title="Pais"
         labelStyle={textStyle.label}
         captionTextStyle={textStyle.paragraph}
         label='Contraseña'
@@ -244,8 +246,8 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
         secureTextEntry={true}
         />
         {/* Ciudad */}
-        <SelectComponent
-        />
+      {/*   <SelectComponent
+        /> */}
         <ValidationInput
           style={themedStyle.input}
           textStyle={textStyle.paragraph}

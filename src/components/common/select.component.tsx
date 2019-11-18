@@ -12,10 +12,12 @@ import {
     Input,
     InputProps,
   } from '@kitten/ui';
-
+  import { Text } from '@kitten/ui';
 interface ComponentProps extends InputProps{
     id?: string | null,
+    title: string,
     nombre?: string | null
+    tStyle: any;
 }
 
 export type SelectComponentProps = ThemedComponentProps & ComponentProps;
@@ -45,14 +47,18 @@ export class SelectComponent extends React.Component<SelectComponentProps> {
 
   public render(): React.ReactNode {
     console.log(this.props)
-    const { style, themedStyle, ...restProps } = this.props;
+    const { style, themedStyle, title, ...restProps } = this.props;
     return (
       <Layout style={styles.container}>
+         <Text
+          category='h5'>
+          {title}
+        </Text>
         <Select
           data={this.data}
           selectedOption={this.state.selectedOption}
           icon={this.renderIcon}
-          //style={[themedStyle.container, styles]}
+        /*   style={[tStyle.container, styles]} */
           onSelect={this.onSelect}
         />
       </Layout>
