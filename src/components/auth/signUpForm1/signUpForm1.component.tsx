@@ -12,6 +12,7 @@ import { CheckBox } from '@kitten/ui';
 import {
   textStyle,
   ValidationInput,
+  SelectComponent,
 } from '@src/components/common';
 import {
   DOBValidator,
@@ -231,34 +232,19 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           validator={EmailValidator}
           onChangeText={this.onEmailInputTextChange}
         />
-        <ValidationInput
-          style={[themedStyle.input, themedStyle.usernameInput]}
-          textStyle={textStyle.paragraph}
-          labelStyle={textStyle.label}
-          placeholder='Seleccione su País'
-          label='País'
-          autoCapitalize='words'
-          validator={NameValidator}
-          onChangeText={this.onCountryInputTextChange}
+        {/* Pais */}
+        <SelectComponent
+        style={themedStyle.input}
+        textStyle={textStyle.paragraph}
+        labelStyle={textStyle.label}
+        captionTextStyle={textStyle.paragraph}
+        label='Contraseña'
+        placeholder='Contraseña'
+        caption={this.passwordCaption()}
+        secureTextEntry={true}
         />
-        <ValidationInput
-          style={[themedStyle.input, themedStyle.usernameInput]}
-          textStyle={textStyle.paragraph}
-          labelStyle={textStyle.label}
-          placeholder='Seleccione su Ciudad'
-          label='Ciudad'
-          autoCapitalize='words'
-          validator={NameValidator}
-          onChangeText={this.onCityInputTextChange}
-        />
-        <ValidationInput
-          style={themedStyle.input}
-          textStyle={textStyle.paragraph}
-          labelStyle={textStyle.label}
-          placeholder='+584240445678'
-          label='Telefono'
-          validator={PhoneNumberValidator}
-          onChangeText={this.onPhoneInputTextChange}
+        {/* Ciudad */}
+        <SelectComponent
         />
         <ValidationInput
           style={themedStyle.input}

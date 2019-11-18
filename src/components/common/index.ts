@@ -66,3 +66,6 @@ export {
   DynamicStatusBar,
   DynamicStatusBarProps,
 } from './dynamicStatusBar.component';
+export{
+  SelectComponent
+} from './select.component'

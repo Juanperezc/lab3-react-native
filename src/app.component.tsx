@@ -19,6 +19,8 @@ import {
   ThemeStore,
 } from '@src/core/themes';
 import NavigationService from '@src/core/services/navigation.service'
+import { EvaIconsPack } from '@ui-kitten/eva-icons'
+import {IconRegistry} from 'react-native-ui-kitten';
 const images: ImageRequireSource[] = [
   require('./assets/images/source/image-profile-1.jpg'),
   require('./assets/images/source/image-profile-2.jpg'),
@@ -85,6 +87,7 @@ export default class App extends React.Component<{}, State> {
     return (
       <ApplicationLoader assets={assets} >
         <ThemeContext.Provider value={contextValue}>
+        <IconRegistry icons={EvaIconsPack} />
           <ApplicationProvider
             mapping={mapping}
             theme={themes[this.state.theme]}>
