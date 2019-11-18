@@ -26,7 +26,6 @@ interface ComponentProps {
   me: boolean;
   profile: BemProfile;
   socials: ProfileSocialsModel;
-
   onFollowPress: () => void;
   onFollowersPress: () => void;
   onFollowingPress: () => void;
@@ -105,9 +104,8 @@ class Profile1Component extends React.Component<Profile1Props> {
               textStyle={textStyle.button}
               onPress={this.onFollowButtonPress}>
               ENVIAR MENSAJE
-            </Button> 
+            </Button>
             }
-            
           </View>
         </ProfileInfo1>
         <ProfileActivityList1

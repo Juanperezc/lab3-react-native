@@ -26,6 +26,7 @@ import {
   PublicationService
 } from '@src/core/services';
 import { BemProfile } from '@src/core/model/bem_profile.model';
+import {ToastAndroid} from 'react-native';
 
 
 interface State {
@@ -134,12 +135,8 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
   };
   private onItemSharePress = (article: BemArticle) => {
     console.log('share', article);
-    PublicationService.share({publication_id: article._id}).then((res) =>{
-    console.log('response', res);
     this.load();
-    },(err) => {
-      console.error('err')
-    })
+  
   };
   private onPostLikePress = (article: BemArticle) => {
   };

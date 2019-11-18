@@ -2,6 +2,7 @@ import React from 'react';
 import {
   ImageSourcePropType,
   ListRenderItemInfo,
+  ToastAndroid,
 } from 'react-native';
 import {
   StyleType,
@@ -20,8 +21,11 @@ import {
 } from './profileActivityList1Item.component';
 import { ArticleList1Item } from '@src/containers/layouts/articles/articleList1/articleList1Item.component';
 import { BemProfile } from '@src/core/model/bem_profile.model';
-
+import { PublicationService } from '@src/core/services';
+import AwesomeAlert from 'react-native-awesome-alerts';
 // @ts-ignore (override `renderItem` prop)
+
+
 interface ComponentProps extends ListProps {
   data: BemArticle[];
   onItemPress: (article: BemArticle) => void;
@@ -30,13 +34,17 @@ interface ComponentProps extends ListProps {
   onItemSharePress: (article: BemArticle) => void;
   renderItem?: (info: ListRenderItemInfo<ImageSourcePropType>, style: StyleType) => React.ReactElement<any>;
 }
-
+interface State {
+  loading: boolean;
+}
 type ListItemElement = React.ReactElement<ProfileActivityList1ItemProps>;
 
 export type ProfileActivityList1Props = ThemedComponentProps & ComponentProps;
 
 class ProfileActivityList1Component extends React.Component<ProfileActivityList1Props> {
-
+  public state: State = {
+    loading:false,
+  };
 /*   private onItemPress = (index: number) => {
     this.props.onItemPress(index);
   }; */
@@ -52,7 +60,17 @@ class ProfileActivityList1Component extends React.Component<ProfileActivityList1
     this.props.onItemLikePress(article);
   };
   private onItemSharePress = (article: BemArticle) => {
-    this.props.onItemSharePress(article);
+    this.setState({loading: true})
+    PublicationService.share({publication_id: article._id}).then((res) =>{
+      /*  console.log('response', res); */
+      this.setState({loading: false})
+       ToastAndroid.show('Publicación compartida !', ToastAndroid.SHORT);
+       this.props.onItemSharePress(article);
+      /*  this.load(); */
+       },(err) => {
+         console.error('err')
+       })
+ 
   };
   private onItemCommentPress = (article: BemArticle) => {
     this.props.onItemCommentPress(article);
@@ -60,17 +78,24 @@ class ProfileActivityList1Component extends React.Component<ProfileActivityList1
   private renderListItemElement = (item: BemArticle): ListItemElement => {
     const { themedStyle } = this.props;
     /* const { photo, create_at, likes } = item; */
+    if (this.state.loading == false){
+      return (
+        <ArticleList1Item
+        style={themedStyle.item}
+        article={item}
+        onPress={this.onItemPress}
+        onLikePress={this.onItemLikePress}
+        onCommentPress={this.onItemCommentPress}
+        onSharePress={this.onItemSharePress}
+      />
+      );
+    }else{
+      return (<AwesomeAlert
+        show={true}
+        showProgress={true}
+        />)
+    }
 
-    return (
-      <ArticleList1Item
-      style={themedStyle.item}
-      article={item}
-      onPress={this.onItemPress}
-      onLikePress={this.onItemLikePress}
-      onCommentPress={this.onItemCommentPress}
-      onSharePress={this.onItemSharePress}
-    />
-    
     /*   <ProfileActivityList1Item
         style={themedStyle.item}
         photo={{ uri: photo }} 
@@ -82,7 +107,7 @@ class ProfileActivityList1Component extends React.Component<ProfileActivityList1
         onPress={this.onItemPress}
         onLikePress={this.onItemLikePressPress}
       /> */
-    );
+ 
   };
 
   private renderItem = (info: ListRenderItemInfo<BemArticle>): ListItemElement => {
