@@ -232,26 +232,18 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           validator={EmailValidator}
           onChangeText={this.onEmailInputTextChange}
         />
-        <ValidationInput
-          style={[themedStyle.input, themedStyle.usernameInput]}
-          textStyle={textStyle.paragraph}
-          labelStyle={textStyle.label}
-          placeholder='Seleccione su País'
-          label='País'
-          autoCapitalize='words'
-          validator={NameValidator}
-          onChangeText={this.onCountryInputTextChange}
+        {/* Pais */}
+        <SelectComponent
+        style={themedStyle.input}
+        textStyle={textStyle.paragraph}
+        labelStyle={textStyle.label}
+        captionTextStyle={textStyle.paragraph}
+        label='Contraseña'
+        placeholder='Contraseña'
+        caption={this.passwordCaption()}
+        secureTextEntry={true}
         />
-        <ValidationInput
-          style={[themedStyle.input, themedStyle.usernameInput]}
-          textStyle={textStyle.paragraph}
-          labelStyle={textStyle.label}
-          placeholder='Seleccione su Ciudad'
-          label='Ciudad'
-          autoCapitalize='words'
-          validator={NameValidator}
-          onChangeText={this.onCityInputTextChange}
-        />
+        {/* Ciudad */}
         <SelectComponent
         />
         <ValidationInput
