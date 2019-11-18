@@ -12,6 +12,7 @@ export { Comment } from './comment.model';
 export { Exercise } from './exercise.model';
 export { Message } from './message.model';
 export { BemArticle } from './bem_article.model';
+export { BemArticleLike } from './bem_article_like.model';
 export { Conversation } from './conversation.model';
 export {
   FileType,

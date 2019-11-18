@@ -2,4 +2,4 @@
 
 export { UserService } from './user.service';
 export { PublicationService } from './publication.service';
-/* export { axiosInstance } from './axiosInstance'; */
+export { CommentaryService } from './commentary.service';

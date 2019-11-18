@@ -23,6 +23,7 @@ import AwesomeAlert from 'react-native-awesome-alerts';
 
 import {
   UserService,
+  PublicationService
 } from '@src/core/services';
 import { BemProfile } from '@src/core/model/bem_profile.model';
 
@@ -74,7 +75,6 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
   public componentWillMount(): void {
     this.load()
     this.props.navigation.addListener('willFocus', this.load)
-    
   }
   load = () => {
     console.log('on view');
@@ -130,9 +130,16 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
     });
   };
   private onItemCommentPress = (article: BemArticle) => {
+    this.onPostPress(article);
   };
   private onItemSharePress = (article: BemArticle) => {
     console.log('share', article);
+    PublicationService.share({publication_id: article._id}).then((res) =>{
+    console.log('response', res);
+    this.load();
+    },(err) => {
+      console.error('err')
+    })
   };
   private onPostLikePress = (article: BemArticle) => {
   };

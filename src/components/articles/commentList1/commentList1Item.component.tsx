@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  TouchableOpacity,
   ImageProps,
 } from 'react-native';
 import {
@@ -20,8 +19,6 @@ import {
   textStyle,
 } from '@src/components/common';
 import { MoreHorizontalIconFill } from '@src/assets/icons';
-import { Comment as CommentModel } from '@src/core/model';
-import { CommentList2 } from '../commentList2';
 import { CommentActivityBar } from '../commentActivityBar.component';
 import { BemComment } from '@src/core/model/bem_comment.model';
 
@@ -58,6 +55,10 @@ class CommentList1ItemComponent extends React.Component<CommentList1ItemProps, S
     const repliesVisible: boolean = !this.state.repliesVisible;
 
     this.setState({ repliesVisible });
+  };
+
+  public componentWillMount(): void {
+    console.log('comments', this.props.comment)
   };
 
   private onReplyMorePress = (index: number) => {
@@ -100,7 +101,7 @@ class CommentList1ItemComponent extends React.Component<CommentList1ItemProps, S
             style={themedStyle.activityAuthoring}
             photo={{uri: comment.author.photo}}
             name={`${comment.author.full_name}`}
-            date={comment.date}
+            date={comment.create_at}
           />
         {/*   <TouchableOpacity
             activeOpacity={0.75}

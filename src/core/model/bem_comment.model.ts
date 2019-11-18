@@ -5,7 +5,6 @@ export interface BemComment {
   author: BemProfile;
   body: string;
   likes: [];
-  date: string;
   create_at: string;
   updated_at: string;
   /* comments?: BemComment[]; */

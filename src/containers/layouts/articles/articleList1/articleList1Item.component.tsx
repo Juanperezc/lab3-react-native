@@ -48,6 +48,12 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
   };
   private onShareButtonPress = () => {
     console.log('share press article list item');
+    let article:BemArticle;
+    if ( this.props.article.parent == null) {
+      article = this.props.article;
+    }else{
+      article = this.props.article.parent;
+    }
     Alert.alert(
       'Advertencia ',
       '¿Estas seguro que quieres compartir este post?',
@@ -58,7 +64,7 @@ class ArticleList1ItemComponent extends React.Component<ArticleList1ItemProps> {
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
-        {text: 'Si', onPress: () => this.props.onSharePress(this.props.article)},
+        {text: 'Si', onPress: () => this.props.onSharePress(article)},
       ],
       {cancelable: false},
     );

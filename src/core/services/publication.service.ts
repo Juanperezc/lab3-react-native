@@ -15,18 +15,21 @@ const createFormData = (photo) => {
       uri: Platform.OS === 'android' ? photo : photo.replace('file://', ''),
   });
 
- /*  Object.keys(body).forEach(key => {
-      data.append(key, body[key]);
-  });
- */
   return data;
 };
 export class PublicationService {
 
 
-   static show(id) : Promise<AxiosStatic>{
-/*      console.log('http://' + apiUrl + '/auth/login'); */
+  static show(id) : Promise<AxiosStatic>{
      return AxiosInstance.get('publications/' + id);
+  }
+
+  static like(data) : Promise<AxiosStatic>{
+    return AxiosInstance.post('publication/like',data);
+  }
+
+  static share(data) : Promise<AxiosStatic>{
+    return AxiosInstance.post('publication/share',data);
   }
 
   static me() : Promise<AxiosStatic>{
@@ -46,16 +49,6 @@ export class PublicationService {
     return AxiosInstance.put('users/' + user._id, data);
 
   }
- /*  public static select = <T>(config: { [key in ThemeKey | 'default']?: T },
-                             currentTheme: ThemeKey): T | null => {
-
-    if (config[currentTheme]) {
-      return config[currentTheme];
-    } else if (config.default) {
-      return config.default;
-    } else {
-      return null;
-    }
-  }; */
+ 
 
 }

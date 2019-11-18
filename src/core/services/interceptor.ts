@@ -36,18 +36,6 @@ AxiosInstance.interceptors.response.use(  async (response) => {
     if (!error.response) {
        return Promise.reject('Network Error')
     }
- /*    else if ((error.response.status === 401) && !originalRequest._retry) {
-        originalRequest._retry = true;
-        return ConfigStorage.getToken()
-            .then(token => {
-                console.log('token', token);
-               // const authTokenResponse = path(['data', 'response'], token)
-                AxiosInstance.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                originalRequest.headers['Authorization'] = 'Bearer ' + token;
-                return axios(originalRequest);
-            })
-            .catch(err => err)
-    } */
     else if ((error.response.status === 401) ){
         ConfigStorage.clearSession();
         NavigationService.navigate('Login',{});

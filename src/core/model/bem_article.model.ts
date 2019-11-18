@@ -2,6 +2,7 @@ import { ImageSource } from '@src/assets/images';
 import { Comment } from './comment.model';
 import { BemProfile } from './bem_profile.model';
 import { BemComment } from './bem_comment.model';
+import { BemArticleLike } from './bem_article_like.model';
 /* import { BemProfile } from './profile.model'; */
 
 export interface BemArticle {
@@ -18,5 +19,5 @@ export interface BemArticle {
   updated_at: string;
 /*   tips: number; */
   commentaries: BemComment[];/* Comment[]; */
-  likes: [];/*  number; */
+  likes: BemArticleLike[];/*  number; */
 }
