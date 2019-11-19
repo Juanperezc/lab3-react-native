@@ -19,13 +19,19 @@ const createFormData = (photo) => {
 };
 export class PublicationService {
 
-
+  static index() : Promise<AxiosStatic>{
+    return AxiosInstance.get('publications');
+  }
   static show(id) : Promise<AxiosStatic>{
      return AxiosInstance.get('publications/' + id);
   }
 
   static like(data) : Promise<AxiosStatic>{
     return AxiosInstance.post('publication/like',data);
+  }
+
+  static store(data) : Promise<AxiosStatic>{
+    return AxiosInstance.post('publications',data);
   }
 
   static share(data) : Promise<AxiosStatic>{

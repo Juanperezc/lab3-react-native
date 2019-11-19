@@ -21,8 +21,16 @@ export class NewArticleContainer extends React.Component<NavigationScreenProps> 
   private navigationKey: string = 'NewArticleContainer';
 
   private onCreatePress = (data: NewArticleForm1Data) => {
-    PublicationService.share
-    this.props.navigation.goBack();
+    PublicationService.store({
+      title: data.title,
+      body: data.body,
+      category: data.category,
+      photo: this.state.backgroundImage
+    }).then((res: any) =>{
+      console.log('funciona', res.data)
+      this.props.navigation.goBack();
+    },(err)=> console.error(err))
+ 
   };
   public componentWillMount(): void {
    
