@@ -22,10 +22,13 @@ import {
   PasswordValidator,
 } from '@src/core/validators';
 import { SignUpForm1Data } from './type';
+import { BemSelectModel } from '@src/core/model/bem_select.model';
+import { BemCountryModel } from '@src/core/model/bem_country.model';
+import { BemCityModel } from '@src/core/model/bem_city.model';
 //import {Picker} from 'react-native'
 //import { SinglePickerMaterialDialog } from 'react-native-material-dialog';
 //import { Button } from '@kitten/ui';
-var  pais  = [
+/*var  pais  = [
 	{
 		value: '1',
 		label: 'Canada'
@@ -42,7 +45,7 @@ var  pais  = [
 		value: '4',
 		label: 'Venezuela'
 	},
-];
+];*/
 
 interface ComponentProps {
   /**
@@ -50,15 +53,11 @@ interface ComponentProps {
    * Will be called with form value if it is valid, otherwise will be called with undefined
    */
   onDataChange: (value: SignUpForm1Data | undefined) => void;
-  onCountrySelected: (value: SignUpForm1Data | undefined) => void;
+  data: Array<BemSelectModel>
 }
 
 export type SignUpForm1Props = ThemedComponentProps & ViewProps & ComponentProps;
 
-interface Pais {
-  value: string;
-  label: string 
-}
 interface State {
   firstName: string | undefined;
   lastName: string | undefined;
@@ -74,7 +73,7 @@ interface State {
 }
 
 class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
-  public paises: Array<Pais> = pais;
+  //public paises: Array<Pais> = pais;
 
   //seeders paises
 
@@ -91,7 +90,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     termsAccepted: false,
     cityDisabled: true
   };
-
+  
   public componentDidUpdate(prevProps: SignUpForm1Props, prevState: State) {
     const oldFormValid: boolean = this.isValid(prevState);
     const newFormValid: boolean = this.isValid(this.state);
@@ -236,7 +235,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
         />
         {/* Pais */}
         <SelectComponent
-        data={[]}
+        data={this.props.data}
         style={themedStyle.input}
         themedStyle={themedStyle}
         title="País"

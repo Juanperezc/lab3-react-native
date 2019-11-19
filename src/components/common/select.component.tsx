@@ -13,13 +13,15 @@ import {
   } from '@kitten/ui';
   import { Text } from '@kitten/ui';
   import {BemCountryModel} from 'src/core/model/bem_country.model'
-  import {BemCityModel} from 'src/core/model/bem_city.model copy'
+  import {BemCityModel} from '@src/core/model/bem_city.model'
+import { BemSelectModel } from '@src/core/model/bem_select.model';
 
 interface ComponentProps extends InputProps{
     id?: string | null,
     title: string,
     nombre?: string | null,
-    data: BemCityModel[] | BemCountryModel[]
+    data: Array<BemSelectModel>
+    //BemCountryModel[]
     themedStyle: any;
     disable?: boolean
     onChangeVisibility?: (value: boolean | undefined) => void;
@@ -31,14 +33,15 @@ export type SelectComponentProps = ThemedComponentProps & ComponentProps;
 export class SelectComponent extends React.Component<SelectComponentProps> {
  
     data = [
-    { text: 'Option 1',id:"1" },
+    { text: "Option 1",id:"1" },
     { text: 'Option 2',id:"2" },
     { text: 'Option 3',id:"3" },
   ];
 
   state = {
     selectedOption: null,
-    disable: false
+    disable: false,
+    
   };
 
   onSelect = (selectedOption) => {
@@ -70,7 +73,7 @@ export class SelectComponent extends React.Component<SelectComponentProps> {
           {title}
         </Text>
         <Select
-          data={this.data}
+          data={this.props.data}
           selectedOption={this.state.selectedOption}
           icon={this.renderIcon}
           disabled = {disabled}
