@@ -53,8 +53,10 @@ interface ComponentProps {
    * Will be called with form value if it is valid, otherwise will be called with undefined
    */
   onDataChange: (value: SignUpForm1Data | undefined) => void;
-  onSelectedOption: (value:  | undefined) => void
+
+  OnSelectedCountry: (data :any) => void
   data: Array<BemSelectModel>
+  city_data: Array<BemSelectModel>
 }
 
 export type SignUpForm1Props = ThemedComponentProps & ViewProps & ComponentProps;
@@ -93,6 +95,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
   };
   
   public componentDidUpdate(prevProps: SignUpForm1Props, prevState: State) {
+/*     console.log('cambios', this.state); */
     const oldFormValid: boolean = this.isValid(prevState);
     const newFormValid: boolean = this.isValid(this.state);
 
@@ -130,16 +133,17 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     this.setState({ username });
   };
 
-  private onPhoneInputTextChange = (phone: string) => {
-    this.setState({ phone });
+
+  private onCountrySelectChange = (country: any) => {
+    console.log(country);
+    this.setState({ country: country.text });
+    this.props.OnSelectedCountry(country);
   };
 
-  private onCountryInputTextChange = (country: string) => {
-    this.setState({ country });
-  };
-
-  private onCityInputTextChange = (city: string) => {
-    this.setState({ city });
+  private onCitySelectChange = (city: any) => {
+    console.log(city);
+    this.setState({ city: city.text });
+   /*  this.setState({ city }); */
   };
 
   /* private onTermsAcceptChange = (termsAccepted: boolean) => {
@@ -155,14 +159,19 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
       && email !== undefined
       && country != undefined
       && city != undefined
-      && phone !== undefined
       && password !== undefined
   };
 
   private passwordCaption = (): string => {
     return this.state.password ? '✓' : 'La constraseña no cumple con los requisitos de seguridad';
   };
+  private isCityLenghtFull = (): boolean => {
+   if (this.props.city_data.length > 0) 
+     return false
+     else 
+     return true
 
+  };
   public render(): React.ReactNode {
     const { style, themedStyle, ...restProps } = this.props;
     /* telefono pais ciudad username */
@@ -190,26 +199,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           validator={NameValidator}
           onChangeText={this.onUsernameInputTextChange}
         />
-        {/* <SinglePickerMaterialDialog
-          title={'Pick one element!'}
-          items={this.paises.map((row) => ({ value: row.value, label: row.label }))}
-          visible={ this.state.visible_country}
-          selectedItem={{ value: this.paises[0].value, label: this.paises[0].label }}
-          onCancel={() => this.state.visible_country = false}
-          onOk={result => {
-           this.state.visible_country = false;
-          }}
-        /> */}
-        {/* <ValidationInput
-          style={themedStyle.input}
-          textStyle={textStyle.paragraph}
-          labelStyle={textStyle.label}
-          placeholder='Watsan'
-          label='LAST NAME'
-          autoCapitalize='words'
-          validator={NameValidator}
-          onChangeText={this.onLastNameValidationResult}
-        /> */}
+      
         <ValidationInput
           style={themedStyle.input}
           textStyle={textStyle.paragraph}
@@ -235,17 +225,17 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
         themedStyle={themedStyle}
         title="País"
         disabled={false}
-        OnSelected={this.onSelectedOption}
+        OnSelected={this.onCountrySelectChange}
         //onSelectedCountry = {this.onSelectedOption}
         />
         {/* Ciudad */}
         <SelectComponent
-        data={[]}
+        data={this.props.city_data}
         style={themedStyle.input}
         themedStyle={themedStyle}
         title="Ciudad"
-        disabled={true}
-        OnSelected={this.onSelectedOption}
+        disabled={this.isCityLenghtFull()}
+        OnSelected={this.onCitySelectChange}
         /> 
         <ValidationInput
           style={themedStyle.input}
@@ -259,13 +249,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           validator={PasswordValidator}
           onChangeText={this.onPasswordInputTextChange}
         />
-        {/* <CheckBox
-          style={themedStyle.termsCheckBox}
-          textStyle={themedStyle.termsCheckBoxText}
-          checked={this.state.termsAccepted}
-          text={'By creating an account, I agree to the Terms of\nUse and Privacy Policy'}
-          onChange={this.onTermsAcceptChange}
-        /> */}
+      
       </View>
     );
   }

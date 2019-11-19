@@ -173,7 +173,7 @@ class ProfileSettings1Component extends React.Component<ProfileSettings1Props, S
           <ProfileSetting
             style={themedStyle.profileSetting}
             hint='Nombre de Usuario'
-            value={'JenGreen'}
+            value={profile.alias}
           />
           <ProfileSetting
             style={themedStyle.profileSetting}

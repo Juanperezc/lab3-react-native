@@ -36,7 +36,9 @@ import {BemSelectModel} from '@src/core/model/bem_select.model'
 interface ComponentProps {
   onSignUpPress: (formData: SignUpForm1Data) => void;
   onSignInPress: () => void;
+  OnSelectedCountry: (data :any) => void;
   data: Array<BemSelectModel>
+  city_data: Array<BemSelectModel>
 }
 
 export type SignUp1Props = ThemedComponentProps & ComponentProps;
@@ -64,7 +66,9 @@ class SignUp1Component extends React.Component<SignUp1Props, State> {
   private onSignInButtonPress = () => {
     this.props.onSignInPress();
   };
-
+  private OnSelectedCountry = (data :any) => {
+    this.props.OnSelectedCountry(data);
+  };
   private renderSignInButtonIcon = (style: StyleType): React.ReactElement<ImageProps> => {
     const { themedStyle } = this.props;
 
@@ -100,7 +104,9 @@ class SignUp1Component extends React.Component<SignUp1Props, State> {
         <SignUpForm1
           style={themedStyle.formContainer}
           onDataChange={this.onFormDataChange}
+          OnSelectedCountry={this.OnSelectedCountry}
           data={this.props.data}
+          city_data={this.props.city_data}
         />
         <Button
           style={themedStyle.signUpButton}
