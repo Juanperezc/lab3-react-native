@@ -13,6 +13,7 @@ import {
   Text,
   Button,
   ButtonProps,
+  TextProps,
 } from '@kitten/ui';
 import { CommentsList1 } from '@src/components/articles';
 import {
@@ -66,7 +67,30 @@ class Article3Component extends React.Component<Article3Props> {
 
     return StringValidator(currentCommentText);
   };
-
+  private renderArticleBodyText = (): string => {
+    const { themedStyle,article } = this.props;
+    if (article.parent != null){
+      return article.parent.body;
+    }else{
+      return article.body
+    }
+  }
+  private renderArticleTitleText = (): string => {
+    const { themedStyle,article } = this.props;
+    if (article.parent != null){
+      return article.parent.title;
+    }else{
+      return article.title;
+    }
+  }
+  private renderArticlePhotoString = (): string => {
+    const { themedStyle,article } = this.props;
+    if (article.parent != null){
+      return article.parent.photo;
+    }else{
+      return article.photo;
+    }
+  }
   private renderSendMessageButton = (): React.ReactElement<ButtonProps> => {
     const { themedStyle } = this.props;
 
@@ -89,16 +113,16 @@ class Article3Component extends React.Component<Article3Props> {
         <Text
           style={themedStyle.titleLabel}
           category='h4'>
-          {article.title}
+          {this.renderArticleTitleText()}
         </Text>
         <ImageBackground
           style={themedStyle.image}
-          source={{ uri: article.photo }}
+          source={{ uri: this.renderArticlePhotoString() }}
         />
         <Text
           style={themedStyle.contentLabel}
           category='s1'>
-          {article.body}
+            {this.renderArticleBodyText()}
         </Text>
         <View style={themedStyle.articleAuthorContainer}>
           <Text

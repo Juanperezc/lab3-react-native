@@ -16,7 +16,7 @@ import {
 import { comments } from '@src/core/data/comment';
 import { Article3 } from './article3.component';
 import AwesomeAlert from 'react-native-awesome-alerts';
-import { PublicationService } from '@src/core/services';
+import { PublicationService, CommentaryService } from '@src/core/services';
 const profiles: Profile[] = [
   profile1,
   profile2,
@@ -36,8 +36,26 @@ export class Article3Container extends React.Component<NavigationScreenProps, St
     currentCommentText: '',
 
   };
- 
+ //on comment like press
   private onLikePress = (index: number) => {
+    console.log('index', index);
+    CommentaryService.like
+    ({commentary_id:this.state.article.commentaries[index]._id}).then((res: any) =>{
+      let commentaries = this.state.article.commentaries.slice();
+      const findIndexLike = commentaries[index].likes.findIndex((lik) => lik._id == res.data.commentary_like._id)
+      if (findIndexLike == -1){
+        commentaries[index].likes.push(res.data.commentary_like)
+      }else{
+        commentaries[index].likes.splice(findIndexLike,1)
+      }
+        this.setState({
+          article : {
+            ...this.state.article,
+            commentaries
+          }});
+    },(err) =>{
+
+    })
 
   };
 
@@ -55,6 +73,28 @@ export class Article3Container extends React.Component<NavigationScreenProps, St
 
   private onCommentSubmit = () => {
     console.log('text', this.state.currentCommentText);
+    CommentaryService.store(
+      {publication_id: this.props.navigation.getParam("article_id"),
+       body: this.state.currentCommentText}).then((res: any) =>{
+
+      this.setState({
+      currentCommentText: null
+      })
+
+      let commentaries = this.state.article.commentaries.slice();
+       commentaries.push(res.data.commentary);
+       this.setState({
+            article : {
+            ...this.state.article,
+            commentaries
+          }
+        })
+      
+      console.log('response', res.data.commentary);
+    },(err) =>{
+      console.error('error', err)
+    })
+    //consumir service aqui
     /* const articleCopy: Article = this.state.article;
     articleCopy.comments.push({
       author: profiles[Math.floor(Math.random() * profiles.length)],
@@ -81,6 +121,7 @@ export class Article3Container extends React.Component<NavigationScreenProps, St
         name: 'mount profile',
         value: res
       });*/
+     
        this.setState({
         article: res.data
       }) 

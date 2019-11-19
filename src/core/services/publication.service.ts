@@ -31,7 +31,7 @@ export class PublicationService {
   static share(data) : Promise<AxiosStatic>{
     return AxiosInstance.post('publication/share',data);
   }
-
+ 
   static me() : Promise<AxiosStatic>{
     /* console.log('http://' + apiUrl + '/api/me');// */
     return AxiosInstance.get('user/me');

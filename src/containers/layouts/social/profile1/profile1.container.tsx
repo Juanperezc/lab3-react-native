@@ -149,17 +149,17 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
         }else if (action == "delete"){
         publications[index].likes.splice(index, 1);
         }
-        Reactotron.log({
+      /*   Reactotron.log({
           name: 'test',
           value: publications
-        })
+        }) */
        /*  console.log('article_with_like', publications); */
        this.setState({
           profile : {
             ...this.state.profile,
             publications
           }
-        }) 
+        })
       }
      /*  this.state.profile */
 
