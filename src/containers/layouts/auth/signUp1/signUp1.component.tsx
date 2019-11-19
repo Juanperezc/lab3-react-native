@@ -31,10 +31,12 @@ import {
   imageSignUp1Bg,
   ImageSource,
 } from '@src/assets/images';
+import {BemSelectModel} from '@src/core/model/bem_select.model'
 
 interface ComponentProps {
   onSignUpPress: (formData: SignUpForm1Data) => void;
   onSignInPress: () => void;
+  data: Array<BemSelectModel>
 }
 
 export type SignUp1Props = ThemedComponentProps & ComponentProps;
@@ -44,7 +46,7 @@ interface State {
 }
 
 class SignUp1Component extends React.Component<SignUp1Props, State> {
-
+  
   public state: State = {
     formData: undefined,
   };
@@ -70,8 +72,7 @@ class SignUp1Component extends React.Component<SignUp1Props, State> {
   };
 
   public render(): React.ReactNode {
-    const { themedStyle } = this.props;
-
+    const { data, themedStyle } = this.props;
     return (
       <ScrollableAvoidKeyboard style={themedStyle.container}>
         <ImageOverlay
@@ -99,6 +100,7 @@ class SignUp1Component extends React.Component<SignUp1Props, State> {
         <SignUpForm1
           style={themedStyle.formContainer}
           onDataChange={this.onFormDataChange}
+          data={this.props.data}
         />
         <Button
           style={themedStyle.signUpButton}
