@@ -53,6 +53,7 @@ interface ComponentProps {
    * Will be called with form value if it is valid, otherwise will be called with undefined
    */
   onDataChange: (value: SignUpForm1Data | undefined) => void;
+  onSelectedOption: (value:  | undefined) => void
   data: Array<BemSelectModel>
 }
 
@@ -145,11 +146,6 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
     this.setState({ termsAccepted });
   }; */
 
-  private onSelectedOption = (country: string) => {
-    this.setState({ country });
-  };
-
-
   private isValid = (value: SignUpForm1Data): boolean => {
     const { firstName,username, date, email,country,city, phone, password} = value;
 
@@ -239,6 +235,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
         themedStyle={themedStyle}
         title="País"
         disabled={false}
+        OnSelected={this.onSelectedOption}
         //onSelectedCountry = {this.onSelectedOption}
         />
         {/* Ciudad */}
@@ -248,6 +245,7 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
         themedStyle={themedStyle}
         title="Ciudad"
         disabled={true}
+        OnSelected={this.onSelectedOption}
         /> 
         <ValidationInput
           style={themedStyle.input}
