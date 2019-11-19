@@ -15,14 +15,13 @@ export class SignUp1Container extends React.Component<NavigationScreenProps> {
   private navigationKey: string = 'SignUp1Container';
 
   public state: State ={
-    countries: undefined
+    countries: new Array<BemSelectModel>()
   };
 
   private onSignUpPress = (data: SignUpForm1Data) => {
     this.props.navigation.goBack();
   };
   public componentWillMount(): void {
-    this.load()
     this.props.navigation.addListener('willFocus', this.load)
   }
 
