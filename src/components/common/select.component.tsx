@@ -9,33 +9,50 @@ import {
   ThemeType,
 } from 'react-native-ui-kitten';
 import {
-    Input,
     InputProps,
   } from '@kitten/ui';
   import { Text } from '@kitten/ui';
+  import {BemCountryModel} from 'src/core/model/bem_country.model'
+  import {BemCityModel} from 'src/core/model/bem_city.model copy'
+
 interface ComponentProps extends InputProps{
     id?: string | null,
     title: string,
-    nombre?: string | null
-    tStyle: any;
+    nombre?: string | null,
+    data: BemCityModel[] | BemCountryModel[]
+    themedStyle: any;
+    disable?: boolean
+    onChangeVisibility?: (value: boolean | undefined) => void;
+    OnSelectedCountry?: (country : string | undefined) => void
 }
 
 export type SelectComponentProps = ThemedComponentProps & ComponentProps;
 
 export class SelectComponent extends React.Component<SelectComponentProps> {
-
+ 
     data = [
-    { text: 'Option 1' },
-    { text: 'Option 2' },
-    { text: 'Option 3' },
+    { text: 'Option 1',id:"1" },
+    { text: 'Option 2',id:"2" },
+    { text: 'Option 3',id:"3" },
   ];
 
   state = {
     selectedOption: null,
+    disable: false
   };
 
   onSelect = (selectedOption) => {
-    this.setState({ selectedOption });
+    this.setState({ selectedOption: selectedOption });
+  };
+
+  onSelectedCountry=(country) =>{
+    this.setState({disable: false})
+  };
+
+    onChangeVisibility = () => {
+      if (this.state.disable == true){
+        this.setState({disable:false});
+      }
   };
 
   renderIcon = (style, visible) => {
@@ -46,17 +63,17 @@ export class SelectComponent extends React.Component<SelectComponentProps> {
   };
 
   public render(): React.ReactNode {
-    const { style, themedStyle, title, ...restProps } = this.props;
-    console.log(this.props)
+    const { style, themedStyle,title, disabled,onChangeVisibility,OnSelectedCountry ,...restProps } = this.props;
     return (
-      <Layout style={[themedStyle.container,style]}>
-         <Text style={[themedStyle.label,style]}>
+      <Layout style={styles.container}>
+         <Text style={styles.label}>
           {title}
         </Text>
         <Select
           data={this.data}
           selectedOption={this.state.selectedOption}
           icon={this.renderIcon}
+          disabled = {disabled}
         /*   style={[tStyle.container, styles]} */
           onSelect={this.onSelect}
         />
@@ -71,8 +88,20 @@ export const SelectComp = withStyles(SelectComponent, (theme: ThemeType) => ({
         width: 330
       },
       label:{
-        fontWeight: 'normal',fontSize: 11,
-        color: theme['text-hint-color']
+        fontSize: 11,
+        color: theme['text-hint-color'],
       }
   }));
   
+const styles = StyleSheet.create({
+    container: {
+        height: 90,
+        padding: 5,
+        width: 335
+      },
+      label:{
+        fontFamily: 'opensans-bold',
+        fontWeight: 'normal',
+        color: "#8F9BB3",
+      }
+});
