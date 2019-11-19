@@ -74,6 +74,12 @@ export class ArticleList1Container extends React.Component<NavigationScreenProps
   };
   private onAddPress = (): void => {
     console.log('on add press')
+    this.props.navigation.navigate({
+      routeName: 'Crear publicación',
+    /*   params: {
+       'profile' :  this.state.profile
+      } */
+    });
   }
   public render(): React.ReactNode {
     return (

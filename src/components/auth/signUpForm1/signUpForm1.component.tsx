@@ -195,7 +195,6 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
           validator={NameValidator}
           onChangeText={this.onUsernameInputTextChange}
         />
-        
         {/* <SinglePickerMaterialDialog
           title={'Pick one element!'}
           items={this.paises.map((row) => ({ value: row.value, label: row.label }))}

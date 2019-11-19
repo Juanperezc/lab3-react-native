@@ -60,8 +60,7 @@ class ArticleList1HeaderComponent extends React.Component<ArticleList1Props> {
         <TopNavigation
           alignment='center'
           title='Inicio'
-
-         /*  leftControl={this.renderLeftControl()} */
+          /* leftControl={this.renderLeftControl()} */
           rightControls={this.renderRightControls()}
         />
       </SafeAreaView>

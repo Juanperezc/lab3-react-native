@@ -22,6 +22,7 @@ import {
   ArticleList3Container,
   ArticleList4Container,
   ArticlesContainer,
+  NewArticleContainer,
 } from '@src/containers/layouts/articles';
 import {
   AuthContainer,
@@ -182,6 +183,10 @@ const ArticlesNavigationMap: NavigationRouteConfigMap = {
     screen: Article2Container,
     navigationOptions: ArticlesNavigationOptions,
   },
+  ['Crear publicación']: {
+    screen: NewArticleContainer,
+    navigationOptions: ArticlesNavigationOptions,
+  },
   ['Detalle publicación']: {
     screen: Article3Container,
     navigationOptions: ArticlesNavigationOptions,
@@ -220,6 +225,7 @@ const SocialNavigationMap: NavigationRouteConfigMap = {
     screen: ProfileSettings1Container,
     navigationOptions: SocialNavigationOptions,
   },
+
   ['Profile Settings 2']: {
     screen: ProfileSettings2Container,
     navigationOptions: SocialNavigationOptions,

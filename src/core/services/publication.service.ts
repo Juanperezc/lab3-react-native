@@ -40,7 +40,7 @@ export class PublicationService {
   static upload_photo(photo) : Promise<AxiosStatic>{
     const formData = createFormData(photo);
     console.log('formData', formData);
-    return AxiosInstance.post('user/upload_photo', formData);
+    return AxiosInstance.post('publication/upload_photo', formData);
   }
 
   static async update(data) : Promise<AxiosStatic>{

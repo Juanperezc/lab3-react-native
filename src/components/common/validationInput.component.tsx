@@ -85,6 +85,8 @@ class ValidationInputComponent extends React.Component<ValidationInputProps, Sta
 
     return (
       <Input
+    /*     multiline={true}
+        maxLength={500} */
         autoCapitalize='none'
         status={this.getStatus()}
         {...restProps}
