@@ -22,6 +22,7 @@ import {
   PasswordValidator,
 } from '@src/core/validators';
 import { NewArticleForm1Data } from './type';
+import { BemSelectModel } from '@src/core/model/bem_select.model';
 //import {Picker} from 'react-native'
 //import { SinglePickerMaterialDialog } from 'react-native-material-dialog';
 //import { Button } from '@kitten/ui';
@@ -32,6 +33,8 @@ interface ComponentProps {
    * Will emit changes depending on validation:
    * Will be called with form value if it is valid, otherwise will be called with undefined
    */
+  backgroundImage: string;
+  category_select: Array<BemSelectModel>;
   onDataChange: (value: NewArticleForm1Data | undefined) => void;
 /*   onCountrySelected: (value: NewArticleForm1Data | undefined) => void; */
 }
@@ -40,12 +43,12 @@ export type NewArticleForm1Props = ThemedComponentProps & ViewProps & ComponentP
 
 interface Pais {
   value: string;
-  label: string 
+  label: string
 }
 interface State {
   title: string | undefined;
   body: string | undefined;
-  photo : string | undefined;
+ /*  photo : string | undefined; */
   category: string | undefined;
  
 }
@@ -58,12 +61,16 @@ class NewArticleForm1Component extends React.Component<NewArticleForm1Props, Sta
   public state: State = {
     title: undefined,
     body: undefined,
-    photo: undefined,
+   /*  photo: undefined, */
     category: undefined,
  
   };
 
   public componentDidUpdate(prevProps: NewArticleForm1Props, prevState: State) {
+   /*  console.log('update') */
+  /*   this.setState({
+      photo: this.props.backgroundImage
+    }) */
     const oldFormValid: boolean = this.isValid(prevState);
     const newFormValid: boolean = this.isValid(this.state);
 
@@ -85,37 +92,33 @@ class NewArticleForm1Component extends React.Component<NewArticleForm1Props, Sta
     this.setState({ title });
   };
 
-  private onDateInputTextChange = (date: string) => {
-/*     this.setState({ date }); */
+
+
+  private onBodyInputTextChange = (body: string) => {
+   this.setState({ body }); 
   };
-
-  private onBodyInputTextChange = (email: string) => {
-/*     this.setState({ email }); */
-  };
-
- 
-
 
   /* private onTermsAcceptChange = (termsAccepted: boolean) => {
     this.setState({ termsAccepted });
   }; */
 
-  private onSelectedOption = (country: string) => {
+  private onSelectedOption = (data : any) => {
+    console.log('on selected', data);
+    this.setState({
+      category: data.text
+    })
    /*  this.setState({ country }); */
   };
 
 
   private isValid = (value: NewArticleForm1Data): boolean => {
-    const { title,body, photo, category} = value;
+    const { title,body, category} = value;
 
     return title !== undefined
       && body != undefined
-      && photo !== undefined
+/*       && photo !== undefined */
       && category !== undefined
-  };
-
- 
-
+    };
   public render(): React.ReactNode {
     const { style, themedStyle, ...restProps } = this.props;
     /* telefono pais ciudad username */
@@ -151,12 +154,12 @@ class NewArticleForm1Component extends React.Component<NewArticleForm1Props, Sta
         />
         {/* Categoria */}
         <SelectComponent
-        data={[]}
+        data={this.props.category_select}
         style={themedStyle.input}
         themedStyle={themedStyle}
-        title="País"
+        title="Categoría"
         disabled={false}
-        //onSelectedCountry = {this.onSelectedOption}
+        OnSelected={this.onSelectedOption}
         />
       </View>
     );

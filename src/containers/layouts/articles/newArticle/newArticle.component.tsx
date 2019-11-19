@@ -33,10 +33,11 @@ import {
   ImageSource,
 } from '@src/assets/images';
 import { NewArticleForm1Data, NewArticleForm1 } from '@src/components/articles/newArticleForm1';
+import { BemSelectModel } from '@src/core/model/bem_select.model';
 
 interface ComponentProps {
   backgroundImage : string;
- 
+  category_select: Array<BemSelectModel>;
   onCreatePress: (formData: NewArticleForm1Data) => void;
   onPhotoPress: () => void;
 }
@@ -53,10 +54,11 @@ class NewArticleComponent extends React.Component<NewArticleProps, State> {
     formData: undefined,
   };
 
-  private backgroundImage: ImageSource = imageApartment1;
+
 
   private onFormDataChange = (formData: NewArticleForm1Data) => {
     this.setState({ formData });
+    console.log('formdata',formData);
   };
 
   private onCreateButtonPress = () => {
@@ -101,14 +103,16 @@ class NewArticleComponent extends React.Component<NewArticleProps, State> {
           </View>
         </ImageOverlay>
         <NewArticleForm1
+          backgroundImage={this.props.backgroundImage}
           style={themedStyle.formContainer}
           onDataChange={this.onFormDataChange}
+          category_select={this.props.category_select}
         /> 
         <Button
           style={themedStyle.signUpButton}
           textStyle={textStyle.button}
           size='large'
-          disabled={!this.state.formData}
+          disabled={!this.state.formData || (this.props.backgroundImage == null)}
           onPress={this.onCreateButtonPress}>
           Crear publicación
         </Button>

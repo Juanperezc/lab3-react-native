@@ -25,19 +25,12 @@ interface ComponentProps extends InputProps{
     themedStyle: any;
     disable?: boolean
     onChangeVisibility?: (value: boolean | undefined) => void;
-    OnSelectedCountry?: (country : string | undefined) => void
+    OnSelected: (data : string | undefined) => void
 }
 
 export type SelectComponentProps = ThemedComponentProps & ComponentProps;
 
 export class SelectComponent extends React.Component<SelectComponentProps> {
- 
-    data = [
-    { text: "Option 1",id:"1" },
-    { text: 'Option 2',id:"2" },
-    { text: 'Option 3',id:"3" },
-  ];
-
   state = {
     selectedOption: null,
     disable: false,
@@ -46,10 +39,13 @@ export class SelectComponent extends React.Component<SelectComponentProps> {
 
   onSelect = (selectedOption) => {
     this.setState({ selectedOption: selectedOption });
+    this.props.OnSelected(selectedOption)
+   
   };
 
-  onSelectedCountry=(country) =>{
-    this.setState({disable: false})
+  onSelected=(data) =>{
+    this.props.OnSelected(this.state.selectedOption)
+ /*    this.setState({disable: false}) */
   };
 
     onChangeVisibility = () => {
@@ -66,7 +62,7 @@ export class SelectComponent extends React.Component<SelectComponentProps> {
   };
 
   public render(): React.ReactNode {
-    const { style, themedStyle,title, disabled,onChangeVisibility,OnSelectedCountry ,...restProps } = this.props;
+    const { style, themedStyle,title, disabled,onChangeVisibility ,...restProps } = this.props;
     return (
       <Layout style={styles.container}>
          <Text style={styles.label}>
