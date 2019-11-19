@@ -50,6 +50,7 @@ interface ComponentProps {
    * Will be called with form value if it is valid, otherwise will be called with undefined
    */
   onDataChange: (value: SignUpForm1Data | undefined) => void;
+  onCountrySelected: (value: SignUpForm1Data | undefined) => void;
 }
 
 export type SignUpForm1Props = ThemedComponentProps & ViewProps & ComponentProps;
@@ -235,14 +236,16 @@ class SignUpForm1Component extends React.Component<SignUpForm1Props, State> {
         />
         {/* Pais */}
         <SelectComponent
+        data={[]}
         style={themedStyle.input}
         themedStyle={themedStyle}
         title="País"
         disabled={false}
-        onSelectedCountry = {this.onSelectedOption}
+        //onSelectedCountry = {this.onSelectedOption}
         />
         {/* Ciudad */}
         <SelectComponent
+        data={[]}
         style={themedStyle.input}
         themedStyle={themedStyle}
         title="Ciudad"
