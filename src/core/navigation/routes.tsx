@@ -100,6 +100,7 @@ import {
   MenuNavigationOptions,
   SocialNavigationOptions,
 } from './options';
+import { UserListContainer } from '@src/containers/layouts/search';
 
 const EcommerceNavigationMap: NavigationRouteConfigMap = {
   ['Add New Card']: {
@@ -152,7 +153,7 @@ const MessagingNavigationMap: NavigationRouteConfigMap = {
   ['Chat 1']: Chat1Container,
   ['Chat 2']: Chat2Container,
   ['Chat 3']: Chat3Container,
-  ['Test Profile']: {
+  ['Perfil Usuario']: {
     screen: Profile1Container,
     navigationOptions: SocialNavigationOptions,
   },
@@ -341,8 +342,17 @@ const MessageNavigator: NavigationContainer = createStackNavigator(
     defaultNavigationOptions: MenuNavigationOptions,
   }
 );
+//*beta
+const SearchNavigator: NavigationContainer = createStackNavigator(
+  {
+    ['Search']: UserListContainer,
+  }, {
+    defaultNavigationOptions: MenuNavigationOptions,
+  }
+);
 const MenuNavigator: NavigationContainer = createBottomTabNavigator({
   ['Inicio']: DashboardNavigator,
+  ['Search']: SearchNavigator,
   ['Message']: MessageNavigator,
   ['Profile']: ProfileNavigator,
   ['Layouts']: LayoutsNavigator,
@@ -350,7 +360,6 @@ const MenuNavigator: NavigationContainer = createBottomTabNavigator({
 }, {
   tabBarComponent: MenuContainer,
 });
-
 
 const AppNavigator: NavigationContainer = createStackNavigator({
   ['Auth']: AuthNavigator,

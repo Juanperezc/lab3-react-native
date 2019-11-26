@@ -27,11 +27,14 @@ import {
 } from '@src/core/services';
 import { BemProfile } from '@src/core/model/bem_profile.model';
 import {ToastAndroid} from 'react-native';
+import { ConfigStorage } from '@src/core/services/storage';
 
 
 interface State {
+
   profile: BemProfile;
   socials: ProfileSocials;
+  profile_other : boolean;
 
 }
 interface ConversationsListNavigationStateParams {
@@ -42,7 +45,9 @@ interface ConversationsListNavigationStateParams {
 export class Profile1Container extends React.Component<NavigationScreenProps, State> {
   private navigationKey: string = 'Profile1Container';
   public state: State = {
+
     profile: null,
+    profile_other: false,
     socials: profileSocials1,
    
   };
@@ -72,29 +77,60 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
       },
     };
   };
-
-  public componentWillMount(): void {
-    this.load()
+   componentDidMount() {
+ 
+  }
+  public  componentWillMount() {
+   /*  this.load() */
+ 
     this.props.navigation.addListener('willFocus', this.load)
   }
-  load = () => {
-    console.log('on view');
-    console.log('mount profile');
-    UserService.me().then( (res: any) => {
-      //console.log('response', res);
-      Reactotron.log({
-        name: 'mount profile',
-        value: res
+   load = async () => {
+   
+    const user_me = JSON.parse(await ConfigStorage.getUser())
+
+    const profile_id = this.props.navigation.getParam('profile_id')
+ /*    console.log('on view', profile_id);
+    console.log('mount profile'); */
+    if (profile_id == undefined){
+      UserService.me().then( (res: any) => {
+        this.setState({
+          profile: res.data.user
+        })
+        if (this.state.profile._id == user_me._id){
+          this.setState({
+            profile_other : true
+          })
+        }else{
+          this.setState({
+            profile_other : false
+          })
+        }
+      }).catch((err) => {
+        console.log('error', err);
       });
-      this.setState({
-        profile: res.data.user
-      })
-    }).catch((err) => {
-      console.log('error', err);
-    });
+    }else{
+      UserService.show(profile_id).then( (res: any) => {
+        this.setState({
+          profile: res.data.user
+        })
+        console.log(user_me);
+        if (this.state.profile._id == user_me._id){
+          this.setState({
+            profile_other : true
+          })
+        }else{
+          this.setState({
+            profile_other : false
+          })
+        }
+      },(err) => console.log(err));
+    }
     this.props.navigation.setParams({
       onConfigPress: this.onConfigPress,
     });
+
+  
   }
   public componentDidUpdate(): void{
 /*     console.log('update profile'); */
@@ -118,6 +154,8 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
   };
 
   private onFollowPress = () => {
+    console.log('accion seguir');
+    
   };
 
   private onPostPress = (article: BemArticle) => {
@@ -170,7 +208,7 @@ export class Profile1Container extends React.Component<NavigationScreenProps, St
     if (this.state.profile != null){
       return (
         <Profile1
-          me={true}
+          me={this.state.profile_other}
           profile={this.state.profile}
           socials={this.state.socials}
           onFollowersPress={this.onFollowersPress}

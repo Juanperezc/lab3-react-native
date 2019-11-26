@@ -42,7 +42,12 @@ export class UserService {
     console.log("formData", formData);
     return AxiosInstance.post("user/upload_photo", formData);
   }
-
+  static async index(): Promise<AxiosStatic> {
+    return AxiosInstance.get("users");
+  }
+  static async show(id): Promise<AxiosStatic> {
+    return AxiosInstance.get("users/" + id);
+  }
   static async update(data): Promise<AxiosStatic> {
     const user = JSON.parse(await ConfigStorage.getUser());
     console.log("usuario", user);

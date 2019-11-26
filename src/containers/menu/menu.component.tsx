@@ -14,6 +14,7 @@ import {
   PersonIconFill,
   GridIconOutline,
   MessageCircleIconOutline,
+  SearchIconOutline,
 } from '@src/assets/icons';
 import { themes } from '@src/core/themes';
 
@@ -45,6 +46,10 @@ class MenuComponent extends React.Component<Props> {
               icon={GridIconOutline}
             />
             <BottomNavigationTab
+              title='Buscar'
+              icon={SearchIconOutline}
+            />
+            <BottomNavigationTab
               title='Mensajes'
               icon={MessageCircleIconOutline}
             />
@@ -52,14 +57,14 @@ class MenuComponent extends React.Component<Props> {
               title='Perfil'
               icon={PersonIconFill}
             />
-            <BottomNavigationTab
+     {/*        <BottomNavigationTab
               title='Layouts'
               icon={MessageCircleIconOutline}
             />
             <BottomNavigationTab
               title='Components'
               icon={MessageCircleIconOutline}
-            />
+            /> */}
           </BottomNavigation>
         </ThemeProvider>
       </SafeAreaView>

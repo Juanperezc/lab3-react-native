@@ -73,7 +73,7 @@ export class Chat3Container extends React.Component<NavigationScreenProps, State
   }
 
   private onProfilePress = (profile: Profile): void => {
-    this.props.navigation.navigate('Test Profile');
+    this.props.navigation.navigate('Perfil Usuario');
   };
 
   private onNewMessageChange = (newMessageText: string): void => {

@@ -2,6 +2,7 @@ import { AsyncStorage } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 import { State } from 'react-native-ui-kitten';
 import React from 'react';
+import { BemProfile } from '@src/core/model/bem_profile.model';
 //import { ThemeKey } from '@src/core/themes';
 
 export class ConfigStorage extends React.Component<NavigationScreenProps, State>{
@@ -35,6 +36,9 @@ export class ConfigStorage extends React.Component<NavigationScreenProps, State>
   }
   public static async getUser(): Promise<any> {
     return AsyncStorage.getItem('user') as Promise<any>;
+  }
+  public static async getUserAwait(): Promise<any>{
+    return  AsyncStorage.getItem('user');
   }
 }
 
